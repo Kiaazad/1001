@@ -20,13 +20,16 @@ default beduins_heaven_or_hell_fork = pnco(
     Jump('heaven_or_hell_fork'),
     )
 # Fights
-default sand_warrior = unit(
-    "Sand warrior",
-    "char/foes/sand_warrior",
-    lvl = 5,
-    type = "Warrior",
-    items = [(quartz_bit, 1)]
-    )
+default sand_warrior = fighter("Sand warrior", 4, "Beast")
+image sand warrior idle:
+    "sand warrior idle_1"
+    .1
+    "sand warrior idle_2"
+    .1
+    "sand warrior idle_3"
+    .1
+    repeat
+
 default beduins_camp_sand_warrior = pnco(
     "Sand warrior",
     "bg/beduins_camp/sand_warrior.webp",
@@ -39,8 +42,7 @@ default a_diamond_to_sell = quest(
     [_("This might be a diamond, I must show it to the jeweler, or better Jafar.")],
     )
 label beduins_camp_sand_warrior:
-    "The fight system is being reworked to fit the first person view."
-    # call screen btl_scr(team([abdul]), team([sand_warrior]))
+    call screen battle([sand_warrior])
     if hero.has(quartz_bit):
         abd "A gem stone?"
         $ qlog.got(a_diamond_to_sell)

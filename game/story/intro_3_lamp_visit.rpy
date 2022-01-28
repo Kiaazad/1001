@@ -266,13 +266,24 @@ label lamp_visit_fight:
             hide jaf
             window hide
             "The fight system is being reworked to fit the first person view."
-            # call screen btl_scr(team([abdul]), team([training_dummy]))
+            $ training_dummy.reset()
+            call screen battle([training_dummy])
 
             with dissolve
             show jaf normal
             with dissolve
             jaf "Not bad."
-            jaf "At least you didn't die."
+            jaf "At least you didn't hurt yourself vailing on a dummy."
+            jaf "Now, do you want to try something that fights back?"
+            menu:
+                "Of course!":
+                    abd "Of course!"
+                    jaf "Alright, let me summon something."
+
+                "I'll pass.":
+                    abd "I'll pass."
+                    jaf "That might be wise rather than coward."
+
             jaf "Or, if you did, the sands of time have worked."
             jaf "It would be hard to decern."
             jaf "Anyways..."
@@ -355,14 +366,83 @@ label ch3_mirror:
     jump ch3_1
 
 
+default training_dummy = fighter("Training dummy", 4, "Dummy")
+image training dummy idle:
+    "training dummy idle_1"
+    .1
+    "training dummy idle_2"
+    .1
+    "training dummy idle_3"
+    .1
+    repeat
+
+default all_demons = [
+    "Scorpion dancer",
+    "Skeletabber",
+    "Dummy teen",
+    "Tornado rider",
+    "Stiffy",
+    ]
+image scorpion dancer idle:
+    "scorpion dancer idle_1"
+    .1
+    "scorpion dancer idle_2"
+    .1
+    "scorpion dancer idle_3"
+    .1
+    repeat
+image skeletabber idle:
+    "skeletabber idle_1"
+    .1
+    "skeletabber idle_2"
+    .1
+    "skeletabber idle_3"
+    .1
+    repeat
+image dummy teen idle:
+    "dummy teen idle_1"
+    .1
+    "dummy teen idle_2"
+    .1
+    "dummy teen idle_3"
+    .1
+    repeat
+image tornado rider idle:
+    "tornado rider idle_1"
+    .1
+    "tornado rider idle_2"
+    .1
+    "tornado rider idle_3"
+    .1
+    repeat
+image stiffy idle:
+    "stiffy idle_1"
+    .1
+    "stiffy idle_2"
+    .1
+    "stiffy idle_3"
+    .1
+    repeat
+
+
+
 label ch3_fight(j=False):
     window hide
-    
-    $ training_dummy.reset()
-    "The fight system is being reworked to fit the first person view."
-    # call screen btl_scr(team([abdul]), team([training_dummy]))
-
+    menu:
+        "Fight a dummy.":
+            $ training_dummy.reset()
+            call screen battle([training_dummy])
+        "Fight demons.":
+            python:
+                d = renpy.random.randint(1,5)
+                enemies = []
+                for i in range(d):
+                    n = renpy.random.choice(all_demons)
+                    l = main_fighter.level + renpy.random.randint(-3, 3)
+                    enemies.append(fighter(n, l, "Demon"))
+            call screen battle(enemies)
     if j:
         return
     else:
         jump ch3_1
+

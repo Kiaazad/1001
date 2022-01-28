@@ -75,13 +75,15 @@ label agrabahs_gate_nasim:
     jump agrabahs_gate
 
 # Fights
-default black_scorpion = unit(
-    "Black scorpion",
-    "char/foes/black_scorpion",
-    lvl = 6,
-    type = "Beast",
-    items = [(scorpion_tail, 1)]
-    )
+default black_scorpion = fighter("Black scorpion", 4, "Beast")
+image black scorpion idle:
+    "black scorpion idle_1"
+    .1
+    "black scorpion idle_2"
+    .1
+    "black scorpion idle_3"
+    .1
+    repeat
 default agrabahs_gate_black_scorpion = pnco(
     "Black scorpion",
     "bg/agrabahs_gate/black_scorpion.webp",
@@ -89,8 +91,7 @@ default agrabahs_gate_black_scorpion = pnco(
     Jump('agrabahs_gate_black_scorpion'),
     )
 label agrabahs_gate_black_scorpion:
-    "The fight system is being reworked to fit the first person view."
-    # call screen btl_scr(team([abdul]), team([black_scorpion]))
+    call screen battle([black_scorpion])
     jump agrabahs_gate
 
 

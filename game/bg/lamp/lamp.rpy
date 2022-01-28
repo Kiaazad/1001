@@ -163,9 +163,19 @@ label lamp_quest:
 
 label lamp_fight:
     scene black
-    $ training_dummy.reset()
-    "The fight system is being reworked to fit the first person view."
-    # call screen btl_scr(team([abdul]), team([training_dummy]))
+    menu:
+        "Fight a dummy.":
+            $ training_dummy.reset()
+            call screen battle([training_dummy])
+        "Fight demons.":
+            python:
+                d = renpy.random.randint(1,5)
+                enemies = []
+                for i in range(d):
+                    n = renpy.random.choice(all_demons)
+                    l = main_fighter.level + renpy.random.randint(-3, 3)
+                    enemies.append(fighter(n, l, "Demon"))
+            call screen battle(enemies)
     jump inside_lamp
 
 label lamp_harem:

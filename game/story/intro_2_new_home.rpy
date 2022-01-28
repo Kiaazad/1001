@@ -41,8 +41,6 @@ label ch2:
     $ qlog.got(visit_malik)
     $ qlog.got(visit_hosein)
     jaf "Abdul!"
-    $ abdul.got_skill(kick)
-    $ abdul.got_skill(punch)
     menu:
         jaf "How are you with swords?"
         "Never used one.":
@@ -150,9 +148,7 @@ label ch2:
                     jaf "Let's see about those wishes."
                     jump ch2_1
                 "I can defend myself if I have to.":
-                    $ abdul.levelup(1)
-                    $ abdul.got_skill(slash)
-                    $ abdul.got_skill(pierce)
+                    # $ abdul.levelup(1)
                     abd "I can defend myself if I have to."
                     show jaf thinking
                     jaf "Well, you'll have to. Probably sooner then you think."
@@ -164,9 +160,7 @@ label ch2:
                     jaf "But let's start with a wish."
                     jump ch2_1
         "Ohohoho... I've cut a hand or two.":
-            $ abdul.levelup(3)
-            $ abdul.got_skill(slash)
-            $ abdul.got_skill(pierce)
+            # $ abdul.levelup(3)
             abd "Ohohoho... I've cut a hand or two."
             show jaf disappointed
             jaf "You're a sick man, Abdul. Finding pleasure in such a barbaric act."

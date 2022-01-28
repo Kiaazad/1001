@@ -107,13 +107,16 @@ default des_0_sword = pnco(
     )
 
 # Fights
-default little_thief = unit(
-    "Little thief",
-    "char/foes/little_thief",
-    lvl = 5,
-    type = "Demon",
-    items = [(small_sword, 2), (water, 1)],
-    )
+default little_thief = fighter("Little thief", 4, "Rogue")
+image little thief idle:
+    "little thief idle_1"
+    .1
+    "little thief idle_2"
+    .1
+    "little thief idle_3"
+    .1
+    repeat
+
 default roc_pass_little_thief = pnco(
     "Little thief",
     "bg/roc_pass/little_thief.webp",
@@ -123,8 +126,7 @@ default roc_pass_little_thief = pnco(
     aggressive = True,
     )
 label roc_pass_little_thief:
-    "The fight system is being reworked to fit the first person view."
-    # call screen btl_scr(team([abdul]), team([little_thief]))
+    call screen battle([little_thief])
     jump roc_pass
 
 

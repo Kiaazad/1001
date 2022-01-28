@@ -12,20 +12,14 @@
     type = "Peasant", # Archetype ##(optional - default is: Peasant)
     )
 default hero = abdul # Set our hero to someone
-default heros_team = team([hero])
+# default heros_team = team([hero])
 default halia = unit(
     "Halia",
     "char/halia",
     lvl = 2,
     type = "Dancer"
     )
-default training_dummy = unit(
-    "Training dummy",
-    "char/foes/training_dummy",
-    lvl = 1,
-    type = "Dummy",
-    cant = ["Parry", "Dodge", "Block"]
-    )
+
 default rasoul = unit(
     "Rasoul",
     "char/rasoul",

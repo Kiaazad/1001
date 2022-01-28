@@ -49,14 +49,13 @@
                 msg.msg("Can't eat that!")
 
 
-    class unit(inventory, fight):
+    class unit(inventory):
         def __init__(self, name, dir,
                     cash = 0, items = [], markup = 1,
                     lvl = 1, type = "Peasant",
                     interests = [], reject = [], cant = []
                     ):
             inventory.__init__(self, cash, items, markup)
-            fight.__init__(self, lvl, type, cant)
             self.name = name
             self.dir = dir
             

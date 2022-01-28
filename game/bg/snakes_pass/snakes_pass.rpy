@@ -47,13 +47,16 @@ default des_1_5 = pnco(
 
 
 # Fights
-default snake = unit(
-    "Snake",
-    "char/foes/snake",
-    lvl = 2,
-    type = "Beast",
-    items = [(dead_snake, 1)]
-    )
+default cobra = fighter("Cobra", 4, "Beast")
+image cobra idle:
+    "cobra idle_1"
+    .1
+    "cobra idle_2"
+    .1
+    "cobra idle_3"
+    .1
+    repeat
+
 default snakes_pass_snake = pnco(
     "Snake",
     "bg/snakes_pass/snake.webp",
@@ -62,8 +65,7 @@ default snakes_pass_snake = pnco(
     aggressive = True,
     )
 label snakes_pass_snake:
-    "The fight system is being reworked to fit the first person view."
-    # call screen btl_scr(team([abdul]), team([snake]))
+    call screen battle([cobra])
     jump snakes_pass
 
 default snake_pass_map = pncs("Snake's pass",
@@ -254,7 +256,10 @@ label desert_1_dream:
     show screen cgscr(jasmine_dream_cg)
     pause
 
-    show bg snakes_pass with dissolve
+    scene
+    show bg snakes_pass onlayer bg
+    show screen pnc(abdul, snake_pass_map)
+    with dissolve
     abd "Woah..."
     abd "That was weird."
     abd "I need to got to the city before I die from heat."

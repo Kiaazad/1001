@@ -101,8 +101,13 @@ init python:
                 return False
 
 
-
+style cg_button is zero
+style cg_drag is zero
+style cg_frame is zero
+style cg_hbox is zero
+style cg_vbox is zero
 screen cgscr(g):
+    style_prefix "cg"
     modal True
     tag cg
     if g.img():
@@ -111,9 +116,9 @@ screen cgscr(g):
         timer renpy.random.random()+.5 repeat True action Function(g.tick)
     timer renpy.random.randint(4, 10) repeat True action Function(g.add_hover)
 
-    if g.show_bars:
-        vbar value hero.pleasure range 1000 left_bar "0GUI/bar2.png" right_bar "0GUI/bar1.png" align(0.0,.5) xysize(63,688) left_gutter 44 right_gutter 44
-        vbar value g.target.pleasure range 1000 left_bar "0GUI/bar4.png" right_bar "0GUI/bar3.png" align(1.0,.5) xysize(63,688) left_gutter 44 right_gutter 44
+    # if g.show_bars:
+    #     vbar value hero.pleasure range 1000 left_bar "0GUI/bar2.png" right_bar "0GUI/bar1.png" align(0.0,.5) xysize(63,688) left_gutter 44 right_gutter 44
+    #     vbar value g.target.pleasure range 1000 left_bar "0GUI/bar4.png" right_bar "0GUI/bar3.png" align(1.0,.5) xysize(63,688) left_gutter 44 right_gutter 44
     
     if g.hover_game:
         for i in g.hovering:
@@ -174,10 +179,10 @@ screen cgscr(g):
                         at btn
                         text _("Gamify")
                         action Function(g.settings, "gamify"), SelectedIf(g.hover_game)
-                    button:
-                        at btn
-                        text _("Bars")
-                        action Function(g.settings, "bars"), SelectedIf(g.show_bars)
+                    # button:
+                    #     at btn
+                    #     text _("Bars")
+                    #     action Function(g.settings, "bars"), SelectedIf(g.show_bars)
 
 
     button:

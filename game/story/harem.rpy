@@ -1,4 +1,15 @@
-﻿label harem:
+﻿
+default halia_fight = fighter("Halia", 4, "Dancer")
+image halia idle:
+    "halia idle_1"
+    .1
+    "halia idle_2"
+    .1
+    "halia idle_3"
+    .1
+    repeat
+
+label harem:
     scene bg harem
     menu:
         "Go talk to the girls.":
@@ -49,8 +60,7 @@
                                     hal "For the dead!"
                                     hide hal
                                     window hide
-                                    "The fight system is being reworked to fit the first person view."
-                                    # call screen btl_scr(team([abdul]), team([halia]))
+                                    call screen battle([halia_fight])
                                     show hulu angry at midright
                                     show huria shocked
                                     hul "{size=50}That's enough!"

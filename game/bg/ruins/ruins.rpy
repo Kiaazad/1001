@@ -44,13 +44,7 @@ default ruins_3 = pnco(
 
 
 # Fights
-default ogre = unit(
-    "Ogre",
-    "char/foes/ogre",
-    lvl = 5,
-    type = "Demon",
-    items = [(coal, 11)]
-    )
+
 default ruins_ogre = pnco(
     "thorns",
     "bg/ruins/ogre.webp",
@@ -60,7 +54,6 @@ default ruins_ogre = pnco(
     )
 label ruins_ogre:
     "The fight system is being reworked to fit the first person view."
-    # call screen btl_scr(team([abdul]), team([ogre]))
     jump ruins
 
 
