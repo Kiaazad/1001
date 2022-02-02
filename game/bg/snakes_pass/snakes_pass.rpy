@@ -47,7 +47,6 @@ default des_1_5 = pnco(
 
 
 # Fights
-default cobra = fighter("Cobra", 4, "Beast")
 image cobra idle:
     "cobra idle_1"
     .1
@@ -65,7 +64,8 @@ default snakes_pass_snake = pnco(
     aggressive = True,
     )
 label snakes_pass_snake:
-    call screen battle([cobra])
+    $ e = fighter("Cobra", renpy.random.randint(4, 8), "Beast")
+    call screen battle([e])
     jump snakes_pass
 
 default snake_pass_map = pncs("Snake's pass",

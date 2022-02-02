@@ -11,9 +11,9 @@ screen navigation():
                 text _("Start")
                 action Start()
         else:
-            button:
-                text _("History")
-                action ShowMenu("history")
+            # button:
+            #     text _("History")
+            #     action ShowMenu("history")
             button:
                 text _("Save")
                 action ShowMenu("save")
@@ -34,14 +34,14 @@ screen navigation():
                 text _("Main Menu")
                 action MainMenu()
 
-        button:
-            text _("About")
-            action ShowMenu("about")
+        # button:
+        #     text _("About")
+        #     action ShowMenu("about")
 
-        if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
-            button:
-                text _("Help")
-                action ShowMenu("help")
+        # if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
+        #     button:
+        #         text _("Help")
+        #         action ShowMenu("help")
 
         if renpy.variant("pc"):
             button:

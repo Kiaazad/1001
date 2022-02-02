@@ -1,6 +1,4 @@
-﻿
-
-init python:
+﻿init python:
     def return_mouse_pos():
         return renpy.get_mouse_pos()
     def bag_to_bag(source, destination):
@@ -12,14 +10,12 @@ init python:
         destination.cash += source.cash
         source.cash = 0
 
-
-
 screen show_bag(p = hero, xside = 0.5):
     style_prefix "shop"
     default mode = "stack"
     default options = 1
     modal True
-    drag:
+    drag align .5,.5:
         xalign xside
         dragged p.dragged
         hbox:

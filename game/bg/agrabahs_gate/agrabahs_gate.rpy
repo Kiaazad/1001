@@ -75,7 +75,6 @@ label agrabahs_gate_nasim:
     jump agrabahs_gate
 
 # Fights
-default black_scorpion = fighter("Black scorpion", 4, "Beast")
 image black scorpion idle:
     "black scorpion idle_1"
     .1
@@ -91,7 +90,8 @@ default agrabahs_gate_black_scorpion = pnco(
     Jump('agrabahs_gate_black_scorpion'),
     )
 label agrabahs_gate_black_scorpion:
-    call screen battle([black_scorpion])
+    $ e = fighter("Black scorpion", renpy.random.randint(2,4), "Beast")
+    call screen battle([e])
     jump agrabahs_gate
 
 

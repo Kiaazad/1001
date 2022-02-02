@@ -55,7 +55,11 @@ screen quest_notif(s):
 
 default qlog = quest_log()
 
+
+style quest_frame is zero
+style quest_button is zero
 screen quests(q = qlog):
+    style_prefix "quest"
     default filters = ["All", "Active", "Completed", "Canceled", "Failed"]
     default colors = {
         "All": "#fff",
@@ -65,7 +69,7 @@ screen quests(q = qlog):
         "Failed": "#444",
     }
     modal True
-    drag:
+    drag align .5,.5:
         frame:
             ysize 650
             hbox:
@@ -85,7 +89,7 @@ screen quests(q = qlog):
                                     if i.stat == filters[q.filt] or filters[q.filt] == "All":
                                         button:
                                             at btn
-                                            background None selected_foreground Frame("quests/arrow.png", 10,0,32,0) xalign 0.0 padding 10,10,40,10 
+                                            background None selected_foreground Frame("quest_arrow", 10,0,32,0) xalign 0.0 padding 10,10,40,10 
                                             text i.name:
                                                 color colors[i.stat]
                                             action Function(q.chose, i), SelectedIf(i == q.slc)
@@ -99,8 +103,7 @@ screen quests(q = qlog):
                                 yalign 0.0
                                 for i in q.slc.info:
                                     text i 
-                        hbox:
-                            yalign 1.0
+                        hbox align .5,1.0:
                             text "Status:"
                             text q.slc.stat:
                                 color colors[q.slc.stat]

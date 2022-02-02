@@ -20,7 +20,6 @@ default beduins_heaven_or_hell_fork = pnco(
     Jump('heaven_or_hell_fork'),
     )
 # Fights
-default sand_warrior = fighter("Sand warrior", 4, "Beast")
 image sand warrior idle:
     "sand warrior idle_1"
     .1
@@ -42,7 +41,8 @@ default a_diamond_to_sell = quest(
     [_("This might be a diamond, I must show it to the jeweler, or better Jafar.")],
     )
 label beduins_camp_sand_warrior:
-    call screen battle([sand_warrior])
+    $ e = fighter("Sand warrior", renpy.random.randint(4, 8), "Beast")
+    call screen battle([e])
     if hero.has(quartz_bit):
         abd "A gem stone?"
         $ qlog.got(a_diamond_to_sell)

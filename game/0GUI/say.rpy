@@ -33,9 +33,28 @@ init python:
     config.character_id_prefixes.append('namebox')
     config.character_id_prefixes.append('namebox1')
 
+
+default quest_log_ui_icon = False
 screen top_bar():
     zorder 1001
     add "top_frame" align .5,.0
+    if quest_log_ui_icon:
+        button:
+            background None align 0.0,0.0 xoffset 40 padding 0,0
+            add "ui_quest"
+            action ToggleScreen('quests')
+    button:
+        background None align 0.0,0.0  padding 0,0
+        add "ui_inventory"
+        action ToggleScreen('show_bag')
+    button:
+        background None align 1.0,0.0 xoffset -40  padding 0,0
+        add "ui_map"
+        action ToggleScreen('map')
+    button:
+        background None align 1.0,0.0  padding 0,0
+        add "ui_save"
+        action ShowMenu("save")
 init python:
     config.overlay_screens.append("top_bar")
 ## Input screen ################################################################

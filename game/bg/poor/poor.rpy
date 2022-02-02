@@ -186,7 +186,7 @@ label petros_shop:
     else:
         show petros normal
         pet "Abully the sinner. What do you need this time?"
-    if qlog.has(beer_for_the_viking) and beer_for_the_viking.stat == "Active":
+    if qlog.has(beer_for_the_viking) and beer_for_the_viking.stat == "Active" and hero.cash >= 2400:
         abd "I need a keg of beer."
         pet "Ohohohoh, what for? having friends over?"
         pet "Any women? I'm coming too."
@@ -209,7 +209,7 @@ label petros_shop:
         abd "Thanks"
         pet "And you don't know me if they catch you."
         "..."
-        jump bazaar
+        jump poor
     show petros normal at right with move
     call screen shop(s = petros_u)
     jump poor

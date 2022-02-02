@@ -1,4 +1,13 @@
 ﻿
+# Fights
+image rasoul idle:
+    "rasoul idle_1"
+    .1
+    "rasoul idle_2"
+    .1
+    "rasoul idle_3"
+    .1
+    repeat
 
 label rasoul_arc_1:
     scene
@@ -32,8 +41,8 @@ label rasoul_arc_1:
             ras "No you won't!{w=.2}{nw}" with vpunch
             scene
             hide pnc
-            "Fight system is being reworked."
-            # call screen btl_scr(team([abdul]), team([rasoul]), .2)
+            $ e = fighter("Rasoul", renpy.random.randint(8, 12) + main_fighter.level, "Beast")
+            call screen battle([e])
             jump agrabahs_gate
             pause 2
             jump beduins_camp
