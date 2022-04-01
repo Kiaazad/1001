@@ -1,6 +1,7 @@
 ﻿init offset = -1
 
 screen preferences():
+    modal True
     tag menu
     use game_menu(_("Preferences"), scroll="viewport"):
         vbox:

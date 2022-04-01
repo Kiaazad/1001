@@ -19,32 +19,32 @@ init python:
                         i[0].add_flag(i[1])
                         timed_flags.remove(i)
 
-
+                main_fighter.recover(1)
 
 
                 # for h in heros_team.team:
                 #     h.regen(rest)
 
-                if hero.food > -8010 and hero.water > -4010:
-                    if hero.stat in ["Resting", "Chatting"]:
-                        hero.food -= 1
-                        hero.water -= 1
-                    else:
-                        hero.food -= 4
-                        hero.water -= 6
-                    if hero.food in range(0,5):
-                        msg.msg("You feel hungry.")
-                    elif hero.food in range(-4005,-4000):
-                        msg.msg("You're starving.")
-                    elif hero.food in range(-8005,-8000):
-                        msg.msg("You've died of starvation.")
+                # if hero.food > -8010 and hero.water > -4010:
+                #     if hero.stat in ["Resting", "Chatting"]:
+                #         hero.food -= 1
+                #         hero.water -= 1
+                #     else:
+                #         hero.food -= 4
+                #         hero.water -= 6
+                #     if hero.food in range(0,5):
+                #         msg.msg("You feel hungry.")
+                #     elif hero.food in range(-4005,-4000):
+                #         msg.msg("You're starving.")
+                #     elif hero.food in range(-8005,-8000):
+                #         msg.msg("You've died of starvation.")
 
-                    if hero.water in range(0,8):
-                        msg.msg("You feel thirsty.")
-                    elif hero.water in range(-2008,-2000):
-                        msg.msg("You're very thirsty.")
-                    elif hero.water in range(-4008,-4000):
-                        msg.msg("You've died of thirst.")
+                #     if hero.water in range(0,8):
+                #         msg.msg("You feel thirsty.")
+                #     elif hero.water in range(-2008,-2000):
+                #         msg.msg("You're very thirsty.")
+                #     elif hero.water in range(-4008,-4000):
+                #         msg.msg("You've died of thirst.")
 
                 if hero.location:
                     hero.location.tick()

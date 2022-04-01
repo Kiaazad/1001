@@ -91,7 +91,13 @@ default agrabahs_gate_black_scorpion = pnco(
     )
 label agrabahs_gate_black_scorpion:
     $ e = fighter("Black scorpion", renpy.random.randint(2,4), "Beast")
-    call screen battle([e])
+    $ loot = [
+        [scorpion_tail, 100],
+        [thorns, 14],
+        [stick, 4],
+        [string, 2],
+    ]
+    call screen battle([e], loot)
     jump agrabahs_gate
 
 
@@ -117,7 +123,8 @@ label agrabahs_gate:
         $ all_places.append(agrabahs_gate_map)
     scene
     show bg desert onlayer bg
-    show screen pnc(abdul, agrabahs_gate_map)
+    show screen pnc(hero, agrabahs_gate_map)
+    with dissolve
     pause
     jump agrabahs_gate
 

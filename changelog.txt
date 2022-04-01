@@ -1,0 +1,13 @@
+﻿
+
+
+# version 0.3
+- More traces of Abdul are erased.
+- Clicks going through save, load and settings screens fixed
+- Fixed the repeating shining gem dialogue
+- You will recover health, mana and stamina while sleeping
+- You will recover a small amount of mana and stamina while not in fight
+- Some of desert placeholder backgrounds are replaced with better looking placeholders
+- Aggressive enemies attack you after 1-5 seconds instead of attacking on hover.
+
+

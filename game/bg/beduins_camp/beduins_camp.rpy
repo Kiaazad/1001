@@ -42,8 +42,14 @@ default a_diamond_to_sell = quest(
     )
 label beduins_camp_sand_warrior:
     $ e = fighter("Sand warrior", renpy.random.randint(4, 8), "Beast")
-    call screen battle([e])
-    if hero.has(quartz_bit):
+    $ loot = [
+        [quartz_bit, 30],
+        [stick, 5],
+        [rope, 5],
+        [None, 50],
+    ]
+    call screen battle([e], loot)
+    if hero.has(quartz_bit) and not qlog.has(a_diamond_to_sell):
         abd "A gem stone?"
         $ qlog.got(a_diamond_to_sell)
     jump beduins_camp
@@ -64,8 +70,8 @@ label beduins_camp:
         $ all_places.append(beduins_camp_loc)
     scene
     show bg beduins_camp onlayer bg
-    show screen pnc(abdul, beduins_camp_loc)
-
+    show screen pnc(hero, beduins_camp_loc)
+    with dissolve
     pause
     jump beduins_camp
 

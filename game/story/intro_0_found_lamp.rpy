@@ -32,7 +32,7 @@ label intro_0_1:
     abd "That isn't...{w=.4} a mirage."
     "..."
     abd "There's something shiny in the sand."
-    $ abdul.got(black_lamp,1,002)
+    $ hero.got(black_lamp,1,002)
     hide des_0_shine with dissolve
     show cg found_lamp_1 with dissolve
     abd "An oil lamp?"
@@ -46,7 +46,7 @@ label intro_0_1:
     menu:
         "Rub the lamp!":
             $ snake_pass_map.add(snake_pass_roc_pass)
-            $ abdul.add_flag("Meet Jafar")
+            $ hero.add_flag("Meet Jafar")
             show cg found_lamp_2 with Dissolve(2)
             $ renpy.pause(1)
             show cg found_lamp_3 with Dissolve(2)
@@ -78,7 +78,7 @@ label intro_0_1:
             abd "{size=25}Sorry."
             $ msg.msg("You got the Black lamp.")
             show jaf thinking
-            $ abdul.stat = "Chatting" # In "Chatting" or "Resting" mode abdul consommes half food and water
+            $ hero.stat = "Chatting" # In "Chatting" or "Resting" mode hero consommes half food and water
             jaf "Do you know what holding my lamp means?"
             show jaf normal
             abd "Do... {w=.6}I get a wish."
@@ -149,7 +149,7 @@ label intro_0_1:
                     abd "No! I just want my wishes Jafar!"
                     jaf "Are you sure? {w=.5}This will not end well for you my friend."
                     menu:
-                        jaf "Last chance, Abdul! Don't throw away this opportunity."
+                        jaf "Last chance! Don't throw away this opportunity."
                         "I really want my wishes Jafar.":
                             abd "I really want my wishes Jafar."
                             jaf "So be it."

@@ -6,7 +6,7 @@
     with dissolve
     $ agrabah_lamp.act = Jump('inside_lamp')
     abd "Woaaaaah. What?"
-    jaf "Welcome to my humble lamp, Abdul."
+    jaf "Welcome to my humble lamp."
     show jaf normal
     with dissolve
     abd "Jafar? Did you bring me inside your lamp?"
@@ -22,7 +22,7 @@
     jaf "It wouldn't be that hard to trick you either, you're pretty gullible."
     abd "I...{w=.5} you're right. Sorry for doubting you."
     abd "So why did you bring me here?"
-    jaf "Abdul my friend, we are going to work together."
+    jaf "My friend, we are going to work together."
     jaf "I want to show you my home."
     abd "This darkness is your home?"
     "..."
@@ -78,7 +78,7 @@ label lamp_visit_save:
     jaf "There's no ceiling here, no walls and that thing you're walking on is not a floor."
     abd "Wait, what!?"
     show jaf angry
-    jaf "Focus, Abdul!"
+    jaf "Focus!"
     show jaf normal
     jaf "Here, take this."
     $ msg.msg("Received a bag?")

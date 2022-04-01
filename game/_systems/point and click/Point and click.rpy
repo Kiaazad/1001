@@ -34,10 +34,12 @@ init python:
             self.shifts = shifts
             self.on_shift = 1
             self.aggressive = aggressive
+            self.triggered = False
         def hovered(self, h):
             if self.hoffset:
                 self.hov = h
-
+        def trigger(self):
+            self.triggered = True
     class pncs:
         def __init__(self, name, clicks = [],
             cond = [], night = None, enemies = []):
@@ -109,6 +111,9 @@ init python:
         def on_show(self):
             for i in self.clicks:
                 i.hov = 0
+            for i in self.clicks:
+                if i.aggressive:
+                    i.triggered = False
 style pnc_button is zero
 screen pnc(p , g):
     style_prefix "pnc"
@@ -132,7 +137,10 @@ screen pnc(p , g):
                     pos i.pos
                     if i.img:
                         background None padding 0,0
-                        add i.img at pnc_item_fade(a = i.on_shift)
+                        fixed fit_first True:
+                            add i.img at pnc_item_fade(a = i.on_shift)
+                            if i.enabled and i.aggressive and not i.triggered:
+                                add "aggressive_alert" align .5,.5
                     else:
                         text i.name
                     if i.enabled:
@@ -140,8 +148,8 @@ screen pnc(p , g):
                             focus_mask True
                             at map_transform
                             action Function(g.clicked, i, p), Function(g.on_show), i.act
-                            if i.aggressive:
-                                hovered Function(i.hovered, 1), i.act
+                            if i.aggressive and not i.triggered:
+                                timer random.randint(1,5) repeat True action Function(i.hovered, 1), Function(i.trigger), i.act
                             else:
                                 hovered Function(i.hovered, 1)
                             unhovered Function(i.hovered, 0)
@@ -172,6 +180,13 @@ screen pnc(p , g):
         if hov:
             text hov
     use clock
+
+image aggressive_alert:
+    "danger_alert"
+    ease .1 zoom .2
+    ease .1 zoom 1
+    repeat
+
 transform baddition(a):
     linear calendar.speed alpha a additive .04
 transform pnc_hover(a):

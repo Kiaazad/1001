@@ -33,6 +33,29 @@
 
             self.strength = 2
             self.agility = 2
+        def sleep(self, amount):
+            for i in range(amount):
+                self.health += self.max_health/20
+                if self.health > self.max_health:
+                    self.health = self.max_health
+                
+                self.mana += self.max_mana/20
+                if self.mana > self.max_mana:
+                    self.mana = self.max_mana
+                
+                self.stamina += self.max_stamina/10
+                if self.stamina > self.max_stamina:
+                    self.stamina = self.max_stamina
+        def recover(self, amount):
+            for i in range(amount):
+                self.mana += self.max_mana/40
+                if self.mana > self.max_mana:
+                    self.mana = self.max_mana
+                
+                self.stamina += self.max_stamina/40
+                if self.stamina > self.max_stamina:
+                    self.stamina = self.max_stamina
+        
 
 
     class fighter_animation:
@@ -76,7 +99,6 @@
             self.stamina += self.max_stamina / divider
             if self.stamina > self.max_stamina:
                 self.stamina = self.max_stamina
-    
 
     class fighter(leveling, stats, fighter_animation, fighting):
         def __init__(self, name, level = 1, type = "Peasant"):
@@ -107,12 +129,14 @@
             self.enemy_turn = 0
             self.enemies = []
             self.action = None
-
-        def set(self, enemies):
+            self.loot_table = None
+            self.loot = None
+        def set(self, enemies, loot):
             self.turn = 2
             self.enemy_turn = 0
             self.enemies = enemies
             self.action = None
+            self.loot_table = loot
 
         def set_action(self, action):
             self.action = action
@@ -123,8 +147,6 @@
         def rest(self, unit):
             unit.rest()
             self.turn = 1
-
-
 
         def attack(self, caster, target):
             damage = caster.strength
@@ -159,7 +181,6 @@
                     return False
             else:
                 return True
-
 
         def set_enemy_action(self):
             if self.enemy_turn < len(self.enemies):
@@ -219,9 +240,13 @@
             unit.animation = "idle"
             self.enemy_turn += 1 
             Hide("battle_enemy_attack")()
-
-
-
+        def calculate_loot(self):
+            if self.loot_table:
+                self.loot = drop_more(self.loot_table, len(self.enemies))
+        def loot_all(self):
+            for i in self.loot:
+                hero.got(i, 1)
+            self.loot = None
 
 default battle_handler = battle_class()
 
@@ -235,7 +260,7 @@ style battle_fixed:
     align (.5,.5)
 style battle_button is zero
 style battle_frame is zero
-screen battle(enemies):
+screen battle(enemies, loot = None):
     modal True
     if len(enemies) in [1, 3, 5]:
         default positions = [
@@ -255,7 +280,7 @@ screen battle(enemies):
             [0,0],
         ]
     default g = battle_handler
-    on "show" action Function(g.set, enemies)
+    on "show" action Function(g.set, enemies, loot)
 
     style_prefix "battle"
 
@@ -263,18 +288,20 @@ screen battle(enemies):
         text "arc"
         action Show("btl_arc")
 
-    # add "#fff9"
+    add "#0009"
     for n,i in enumerate(g.enemies):
-        vbox:
-            anchor .5,1.0 align .5,.78
+        vbox spacing 8 anchor .5,1.0 align .5,.78:
             offset positions[n]
             if i.action and not i.action == "Rest":
-                add "battle_{}".format(i.action.lower()) align .5,.5
-            text i.name
-            text "level: {} {}".format(i.level, i.type) size 20
-            fixed:
-                bar value i.health range i.max_health xysize(120,25) left_bar "#900" right_bar "#9005"
-                text "{} / {}".format(i.health, i.max_health) size 20
+                frame:
+                    add "battle_{}".format(i.action.lower()) align .5,.5
+            frame:
+                vbox:
+                    text i.name
+                    text "level: {} {}".format(i.level, i.type) size 20
+                    fixed:
+                        bar value i.health range i.max_health xysize(120,25) left_bar "#900" right_bar "#9005"
+                        text "{} / {}".format(i.health, i.max_health) size 20
             button:
                 background None
                 if not i.animation == "dead":
@@ -292,22 +319,22 @@ screen battle(enemies):
                     button:
                         text _("Attack")
                         if main_fighter.stamina >= main_fighter.strength/2:
-                            action Function(g.set_action, "Attack")
+                            action Function(g.set_action, "Attack") keysym "1"
                     button:
                         text _("Defend")
-                        action Function(g.defend, main_fighter)
-                    button:
-                        text _("Spell")
-                        action Show("battle_spell")
-                    button:
-                        text _("Item")
-                        action Show("battle_item")
+                        action Function(g.defend, main_fighter) keysym "2"
                     button:
                         text _("Rest")
-                        action Function(g.rest, main_fighter)
+                        action Function(g.rest, main_fighter) keysym "3"
+                    button:
+                        text _("Spell")
+                        action Show("battle_spell") keysym "4"
+                    button:
+                        text _("Item")
+                        action Show("battle_item") keysym "5"
                     button:
                         text _("Escape")
-                        action Return()
+                        action Return() keysym "6"
                 else:
                     button:
                         text _("Cancel")
@@ -327,25 +354,39 @@ screen battle(enemies):
         fixed:
             bar value main_fighter.stamina range main_fighter.max_stamina xysize(800,25) left_bar "#996900" right_bar "#99960055"
             text "{} / {}".format(main_fighter.stamina, main_fighter.max_stamina) size 20
-        text "Strength: {}  Agility: {}".format(main_fighter.strength, main_fighter.agility)
+        frame:
+            text "You are level: {}  Strength: {}  Agility: {}".format(main_fighter.level, main_fighter.strength, main_fighter.agility)
 
     if g.turn == 3:
         button:
             background None
             action NullAction()
         frame:
-            vbox:
+            vbox spacing 10:
                 text _("You're dead.")
                 button:
-                    text _("Exit")
-                    action Return("Lost")
+                    text _("Let the darkness take over")
+                    action MainMenu()
+                button:
+                    text _("Reach for the sands of time")
+                    action ShowMenu("load")
+                
     elif g.turn == 4:
+        timer .4 action Function(g.calculate_loot)
         button:
             background None
             action NullAction()
         frame:
-            vbox:
+            vbox spacing 10:
                 text _("You won.")
+                if g.loot:
+                    text _("Here's your loot.")
+                    hbox align .5,.5 spacing 10:
+                        for i in g.loot:
+                            add i.icon
+                    button:
+                        text _("Loot all")
+                        action Function(g.loot_all)
                 button:
                     text _("Exit")
                     action Return("won")
@@ -391,6 +432,13 @@ screen battle_item():
                 action Hide("battle_item")
 
 
+init python:
+    def calculate_loot(g):
+        loot = []
+        for i in g.enemies:
+            loot.append(i.loot)
+screen battle_loot(g):
+    $ loot = calculate_loot(g)
 
 
 

@@ -47,10 +47,10 @@ screen top_bar():
         background None align 0.0,0.0  padding 0,0
         add "ui_inventory"
         action ToggleScreen('show_bag')
-    button:
-        background None align 1.0,0.0 xoffset -40  padding 0,0
-        add "ui_map"
-        action ToggleScreen('map')
+    # button:
+    #     background None align 1.0,0.0 xoffset -40  padding 0,0
+    #     add "ui_map"
+    #     action ToggleScreen('map')
     button:
         background None align 1.0,0.0  padding 0,0
         add "ui_save"

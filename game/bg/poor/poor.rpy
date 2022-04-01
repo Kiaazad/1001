@@ -47,7 +47,8 @@ image bg poor = "bg/poor/bg.webp"
 label poor:
     scene
     show bg poor onlayer bg
-    show screen pnc(abdul, poor_map)
+    show screen pnc(hero, poor_map)
+    with dissolve
     pause
     jump poor
 
@@ -80,7 +81,7 @@ label poor_thief:
         abd "You seem the wrong type to gamble with."
         ahm "Come on buddy... What's the harm?"
         abd "I don't know..."
-        $ ahmad_u.pick_pocket(abdul)
+        $ ahmad_u.pick_pocket(hero)
         ahm "Alright buddy... I'm here if you want to have some fun."
         $ ahmad_u.add_flag("first")
     else:
@@ -91,14 +92,14 @@ label poor_thief:
                 abd "Sure..."
                 ahm "..."
                 ahm "Oh that's odd, I can't find my lucky coin. let's do it later."
-                $ ahmad_u.pick_pocket(abdul)
+                $ ahmad_u.pick_pocket(hero)
                 ahm "let's do it later."
             "No!":
                 ahm "Come on buddy..."
                 ahm "Don't be like that."
                 abd "NO!"
                 ahm "..."
-                $ ahmad_u.pick_pocket(abdul)
+                $ ahmad_u.pick_pocket(hero)
                 ahm "Alright, you'll be back."
             "So you can pick my pocket?" if qlog.has(learn_pick_pocket) == "Active":
                 abd "So you can pick my pocket while I'm distracted?"
@@ -132,7 +133,7 @@ label poor_thief:
                 ahm "Then with a little dexterity..."
                 ahm "Strong fingers..."
                 ahm "Anf finesse..."
-                $ ahmad_u.pick_pocket(abdul)
+                $ ahmad_u.pick_pocket(hero)
                 ahm "Viola..."
                 "..."
                 abd "Is that it?"
@@ -179,14 +180,14 @@ label petros_shop:
     scene
     if not "first" in petros_u.flags:
         show petros normal
-        pet "Hey... Dabul... know any women to hook me up with?"
-        abd "It's Abdul, and no."
+        pet "Hey... stranger... know any women to hook me up with?"
+        abd "What? no."
         pet "Came here to sin then? What's your choice?"
         $ petros_u.add_flag("first")
     else:
         show petros normal
-        pet "Abully the sinner. What do you need this time?"
-    if qlog.has(beer_for_the_viking) and beer_for_the_viking.stat == "Active" and hero.cash >= 2400:
+        pet "Ah, the sinner. What do you need this time?"
+    if qlog.has(beer_for_the_viking) and beer_for_the_viking.stat == "Active" and hero.has(vikings_note):
         abd "I need a keg of beer."
         pet "Ohohohoh, what for? having friends over?"
         pet "Any women? I'm coming too."
@@ -195,9 +196,11 @@ label petros_shop:
         abd "Yes."
         pet "I was wondering when he'll run out."
         pet "A keg costs 2400 Dinars."
-        $ hero.paidcash(2400)
-        $ petros_u.gotcash(2400)
+        $ hero.drop(vikings_note, 1)
         abd "Here."
+        abd "He gave me this."
+        pet "Another I owe you?"
+        pet "Well, he does pay hid debts every now and then."
         pet "Alright, wait here."
         hide petros with moveoutright
         pause 4
@@ -456,7 +459,7 @@ label widows_house:
             abd "Wow, that was hurtful."
             wid "Remove your clothes!"
             abd "Yes, Ma'am!"
-            # Show Abdul naked
+            # Show hero naked
             wid "{size=18}Oh, my...{/size}"
             "..."
             abd "And now?"

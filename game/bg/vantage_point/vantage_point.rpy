@@ -26,7 +26,8 @@ image bg vantage_point = "bg/vantage_point/bg.webp"
 label vantage_point:
     scene
     show bg vantage_point onlayer bg
-    show screen pnc(abdul, vantage_point_map)
+    show screen pnc(hero, vantage_point_map)
+    with dissolve
     pause
     jump vantage_point
 

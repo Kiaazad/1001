@@ -42,7 +42,8 @@ label heaven_oasis:
         $ all_places.append(heaven_oasis_loc)
     scene
     show bg heaven_oasis onlayer bg
-    show screen pnc(abdul, heaven_oasis_loc)
+    show screen pnc(hero, heaven_oasis_loc)
+    with dissolve
     pause
     jump heaven_oasis
 
@@ -83,22 +84,28 @@ default beer_for_the_viking = quest(
     [_("The Viking in the oasis wants me to buy him some beer. A keg of beer.")],
     )
 
-
+default vikings_note = item(
+    _("viking's note"),
+    _("A note with the viking's signature."),
+    "vikings_note",
+    3750,
+    [],
+    )
 label the_viking:
     scene
     if not "talked about boat" in viking_u.flags: # checks if they have not talked about the boat incident
         show viking normal
-        vik "Abdul the wood collector... so, have you come to take my boat apart?"
+        vik "The wood collector... so, have you come to take my boat apart?"
         abd "Do you always have to mention that? I already told you, I thought it was abandoned."
         vik "Alright alright... Came to buy what I've fished out from my sunken cargo?"
         $ viking_u.add_flag("talked about boat") # adds a flag that they have talked about the boat
     else: # otherwise the usual greeting
         show viking normal
-        vik "Abdul the shipwrecker! nice to see you again."
+        vik "The shipwrecker! nice to see you again."
         abd "Hey, hi."
     
     if not qlog.has(beer_for_the_viking): # check if the quest is not already in the quest log
-        vik "I have a favor to ask Abdul my friend."
+        vik "I have a favor to ask my friend."
         abd "Out of food again?"
         vik "No, this time it's something more important."
         abd "More important than food?"
@@ -107,18 +114,18 @@ label the_viking:
         vik "Come on, they won't suspect you."
         vik "I in other hand, can't take a step in that city without eyes following me."
         abd "I can't."
-        vik "I'm dying of thirst Abdul."
+        vik "I'm dying of thirst."
         abd "There's water."
-        vik "Vikings don't drink that junk. Help me here Abdul."
+        vik "Vikings don't drink that junk. Help me here friend."
         abd "Alright!"
         vik "Thank you. You're a savior."
         $ qlog.got(beer_for_the_viking) # add the quest
-        $ abdul.gotcash(2500) # Giving somebody some money
-        vik "Here, take this money and buy as many as you can."
+        $ hero.got(vikings_note)
+        vik "Here, take this note to Petros."
         abd "Sure, do you need any food?"
         vik "No I'm all set on that front."
         jump heaven_oasis
-    elif "Deliver the keg to the Viking." in beer_for_the_viking.info and abdul.has(beer_keg): # If the quest is active
+    elif "Deliver the keg to the Viking." in beer_for_the_viking.info and hero.has(beer_keg): # If the quest is active
         vik "Got the beer?"
         abd "Yes, here!"
         $ hero.drop(beer_keg, 1)
@@ -151,7 +158,7 @@ label heaven_oasis_fishing:
 
     if not "first fish warning" in viking_u.flags and 30 < heaven_oasis_pound.population < 50:
         show viking normal
-        vik "Slow down Abdul?"
+        vik "Slow down my friend!"
         abd "What?"
         vik "If you catch too many fish too fast, they'll have a hard time replacing the fish you've caught."
         abd "I know that, I sold fish my whole life.."
@@ -160,7 +167,7 @@ label heaven_oasis_fishing:
         $ viking_u.add_flag("first fish warning")
     if not "second fish warning" in viking_u.flags and heaven_oasis_pound.population < 30:
         show viking normal
-        vik "Abdul my friend, You're fishing this pound dry."
+        vik "You're fishing this pound dry."
         abd "You fish here too."
         vik "True, but I catch a fish each day. That hardly puts a dent in their numbers."
         abd "Well, I need the money."

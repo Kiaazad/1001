@@ -65,7 +65,12 @@ default snakes_pass_snake = pnco(
     )
 label snakes_pass_snake:
     $ e = fighter("Cobra", renpy.random.randint(4, 8), "Beast")
-    call screen battle([e])
+    $ loot = [
+        [dead_snake, 80],
+        [coal, 2],
+        [feather, 4],
+    ]
+    call screen battle([e], loot)
     jump snakes_pass
 
 default snake_pass_map = pncs("Snake's pass",
@@ -83,7 +88,8 @@ image bg snakes_pass = "bg/snakes_pass/bg.webp"
 label snakes_pass:
     scene
     show bg snakes_pass onlayer bg
-    show screen pnc(abdul, snake_pass_map)
+    show screen pnc(hero, snake_pass_map)
+    with dissolve
     pause
     jump snakes_pass
 
@@ -93,7 +99,7 @@ label desert_1:
         $ all_places.append(snake_pass_map)
     scene
     show bg snakes_pass onlayer bg
-    show screen pnc(abdul, snake_pass_map)
+    show screen pnc(hero, snake_pass_map)
     with dissolve
 
     abd "It's unusually hot today."
@@ -125,9 +131,9 @@ screen mirage_1:
     else:
         timer .01 action Jump("desert_1_conv")
     if intervals == 5:
-        text "Abdul" at fade_to_screen
+        text "Hey" at fade_to_screen
     elif intervals == 10:
-        text "Abdul" at fade_to_screen
+        text "Handsome" at fade_to_screen
     elif intervals == 15:
         text "Come to me" at fade_to_screen
     frame:
@@ -144,19 +150,19 @@ label desert_1_conv:
     hide screen collect
     hide screen mirage_1
     show jasmine seducing at center with Dissolve(3)
-    jas "Abdul..."
+    jas "Hey..."
     abd "Yes?"
-    jas "Come to me, Abdul."
+    jas "Come to me, handsome."
     abd "Yes, your highness."
-    jas "Abdul, I need your help."
+    jas "I need your help."
     abd "What can I do for you, my princess?"
     jas "Agrabah is in trouble."
     abd "I will give my life for my city. What do you need from me?"
-    jas "I need your seed, Abdul."
+    jas "I need your seed, stud."
     abd "My seed?"
     jas "I need you to honor me with an heir."
     abd "With...?"
-    jas "I need you to impregnate me, Abdul. Right here, Right now."
+    jas "I need you to impregnate me. Right here, Right now."
     abd "Are you..."
     abd "If you insist, your highness."
 
@@ -258,7 +264,7 @@ label desert_1_dream:
 
     scene
     show bg snakes_pass onlayer bg
-    show screen pnc(abdul, snake_pass_map)
+    show screen pnc(hero, snake_pass_map)
     with dissolve
     abd "Woah..."
     abd "That was weird."

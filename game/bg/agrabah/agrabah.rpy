@@ -108,7 +108,8 @@ image bg agrabah = "bg/agrabah/bg.webp"
 label agrabah:
     scene
     show bg agrabah onlayer bg
-    show screen pnc(abdul, agrabah_map)
+    show screen pnc(hero, agrabah_map)
+    with dissolve
     pause
     jump agrabah
 
@@ -116,9 +117,13 @@ label agrabah:
 label sleeping:
     menu:
         "Sleep.":
-            show screen time_pass(renpy.random.randint(3,10))
+            $ hours = renpy.random.randint(3,10)
+            show screen time_pass(hours)
+            $ main_fighter.sleep(hours)
             "Resting for a while."
         "Nap.":
-            show screen time_pass(renpy.random.randint(1,3))
+            $ hours = renpy.random.randint(1,3)
+            show screen time_pass(hours)
+            $ main_fighter.sleep(hours)
             "Resting for a while."
     jump agrabah

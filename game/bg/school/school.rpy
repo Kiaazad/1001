@@ -26,7 +26,8 @@ image bg school = "bg/school/bg.webp"
 label school:
     scene
     show bg school onlayer bg
-    show screen pnc(abdul, school_map)
+    show screen pnc(hero, school_map)
+    with dissolve
     pause
     jump school
 

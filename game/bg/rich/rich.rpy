@@ -55,7 +55,7 @@ define kam = Character("Kamal", color="#4ff", what_text_color="#dff")
 label rich_laila:
     scene
 
-    if not "kamal's warning" in abdul.flags:
+    if not "kamal's warning" in hero.flags:
         show laila normal
         lai "New slave?"
         abd "What?"
@@ -79,16 +79,16 @@ label rich_laila:
         kam "Go!"
         kam "Before I report you to the guards."
         abd "alright..."
-        $ abdul.flags.append("kamal's warning")
+        $ hero.flags.append("kamal's warning")
         jump rich
-    elif not "kamal's second warning" in abdul.flags:
+    elif not "kamal's second warning" in hero.flags:
         show laila normal with dissolve
         show kamal normal at midright with moveinright
         kam "What did I tell you?"
         kam "Get lost!"
-        $ abdul.flags.append("kamal's second warning")
+        $ hero.flags.append("kamal's second warning")
         jump rich
-    elif not "got arrested" in abdul.flags:
+    elif not "got arrested" in hero.flags:
         show laila normal with dissolve
         show kamal normal at midright with moveinright
         kam "{size=44}Guard!"
@@ -104,7 +104,7 @@ label rich_laila:
         abd "But...{w=.2}{nw}"
         ras "{size=44}Move!{w=.2}{nw}" with hpunch
         "{nw}"
-        $ abdul.flags.append("got arrested")
+        $ hero.flags.append("got arrested")
         jump rasoul_arc_1
     else:
         show laila normal with dissolve
@@ -130,6 +130,7 @@ image bg rich = "bg/rich/bg.webp"
 label rich:
     scene
     show bg rich onlayer bg
-    show screen pnc(abdul, rich_map)
+    show screen pnc(hero, rich_map)
+    with dissolve
     pause
     jump rich

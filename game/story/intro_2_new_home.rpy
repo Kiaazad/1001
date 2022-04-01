@@ -17,7 +17,7 @@ label ch2:
     $ street_home_loc.enabled = True
     show black with Dissolve(2)
     show bg agrabah onlayer bg
-    show screen pnc(abdul, agrabah_map)
+    show screen pnc(hero, agrabah_map)
     show jaf normal
     hide black with Dissolve(2)
     show jaf smile
@@ -40,7 +40,7 @@ label ch2:
     jaf "We'll need to pay both a visit, eventually."
     $ qlog.got(visit_malik)
     $ qlog.got(visit_hosein)
-    jaf "Abdul!"
+    jaf "Say!"
     menu:
         jaf "How are you with swords?"
         "Never used one.":
@@ -65,13 +65,13 @@ label ch2:
                     show jaf angry
                     
                     menu:
-                        jaf "Are you going back on our deal, Abdul?"
+                        jaf "Are you going back on our deal?"
                         "I mean, can't I just fix everything with my wishes now?":
                             abd "I mean, can't I just fix..."
                             show jaf angry
                             jaf "Is that so? You and your tiny brain of yours are going to fix everyone's problems. What can go wrong?"
                             jaf "Didn't I warn you what would happen?"
-                            jaf "I can't afford to wait for the next person, Abdul. Don't ruin this for both of us."
+                            jaf "I can't afford to wait for the next person. Don't ruin this for both of us."
                             jaf "Do you really want to go head to head with me?"
                             
                             menu:
@@ -80,7 +80,7 @@ label ch2:
                                     abd "No Jafar. Forgive my moment of stupidity."
                                     $ qlog.got(master_swordsman)
                                     show jaf normal
-                                    jaf "Good.{w=.5} You've escaped a sticky situation, Abdul."
+                                    jaf "Good.{w=.5} You've escaped a sticky situation."
                                     jaf "Let's not waste any more time on this nonsense and let us start putting those wishes to good use."
                                     jump ch2_1
                                 "Yes! I'm your master, Jafar!":
@@ -92,7 +92,7 @@ label ch2:
                             abd "No, no, no, I just forgot."
                             $ qlog.got(master_swordsman)
                             show jaf disappointed
-                            jaf "Get your head in the game, Abdul. I'm not going to hold your hand all the time."
+                            jaf "Get your head in the game. I'm not going to hold your hand all the time."
                             show jaf normal
                             jaf "Let me take one of those wishes from your hands before you \"forget\" again."
                             jump ch2_1
@@ -148,7 +148,7 @@ label ch2:
                     jaf "Let's see about those wishes."
                     jump ch2_1
                 "I can defend myself if I have to.":
-                    # $ abdul.levelup(1)
+                    # $ hero.levelup(1)
                     abd "I can defend myself if I have to."
                     show jaf thinking
                     jaf "Well, you'll have to. Probably sooner then you think."
@@ -160,10 +160,10 @@ label ch2:
                     jaf "But let's start with a wish."
                     jump ch2_1
         "Ohohoho... I've cut a hand or two.":
-            # $ abdul.levelup(3)
+            # $ hero.levelup(3)
             abd "Ohohoho... I've cut a hand or two."
             show jaf disappointed
-            jaf "You're a sick man, Abdul. Finding pleasure in such a barbaric act."
+            jaf "You're a sick man. Finding pleasure in such a barbaric act."
             abd "It is the law."
             show jaf normal
             jaf "I know, I know, I'm not against some bloodshed to get something important done. I just don't resort to violence unless I must."
@@ -198,7 +198,7 @@ label ch2_1:
         "I wish that I can use the lamp as I wish.":
             abd "I wish that I can use the lamp as I wish."
             show jaf angry
-            jaf "ABDUL!?"
+            jaf "You bastard!!"
             abd "What?"
             
             menu:
@@ -231,7 +231,7 @@ label ch2_1:
         "I wish that only I can decide who can see this lamp.":
             abd "I wish that only I can decide who can see this lamp.."
             show jaf genie
-            jaf "What have you done, Abdul?!"
+            jaf "What have you done?!"
             jaf "You bastard, I should've known not to trust you!"
             jaf "I can't stop it now, Your...{w=.5} Your wish is granted...{w=.5} MASTER!"
 

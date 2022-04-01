@@ -34,7 +34,8 @@ image bg caravanserai = "bg/caravanserai/bg.webp"
 label caravanserai:
     scene
     show bg caravanserai onlayer bg
-    show screen pnc(abdul, caravanserai_map)
+    show screen pnc(hero, caravanserai_map)
+    with dissolve
     pause
     jump caravanserai
 

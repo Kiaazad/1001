@@ -5,16 +5,16 @@ default old_gate_beduins_camp = pnco(
     (124, 714),
     Jump('beduins_camp'),
     )
-default old_gate_ruins = pnco(
-    "Ruins",
+default old_gate_watch_tower = pnco(
+    "The watch tower",
     None,
-    (1600, 576),
-    Jump('ruins'),
+    (1200, 676),
+    Jump('watch_tower'),
     )
 default old_gate_southern_trade_route = pnco(
     "Southern trade route",
     None,
-    (955, 343),
+    (1500, 943),
     Jump('southern_trade_route'),
     )
 label southern_trade_route:
@@ -26,7 +26,7 @@ default old_gate_map = pncs(
     "Old gate",
     [
         old_gate_beduins_camp,
-        old_gate_ruins,
+        old_gate_watch_tower,
         old_gate_southern_trade_route,
     ], night = "bg/old_gate/night.webp"
     )
@@ -40,7 +40,8 @@ label old_gate:
         $ all_places.append(old_gate_map)
     scene
     show bg old_gate onlayer bg
-    show screen pnc(abdul, old_gate_map)
+    show screen pnc(hero, old_gate_map)
+    with dissolve
     pause
     jump old_gate
 

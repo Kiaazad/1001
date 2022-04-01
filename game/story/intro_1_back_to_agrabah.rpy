@@ -1,7 +1,7 @@
 ﻿label ch1:
     show black with Dissolve(2)
     show bg street onlayer bg
-    show screen pnc(abdul, street_map)
+    show screen pnc(hero, street_map)
     show jaf normal
     hide black with Dissolve(2)
     show jaf smile

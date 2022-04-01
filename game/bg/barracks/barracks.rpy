@@ -31,7 +31,8 @@ image bg barracks = "bg/barracks/bg.webp"
 label barracks:
     scene
     show bg barracks onlayer bg
-    show screen pnc(abdul, barracks_map)
+    show screen pnc(hero, barracks_map)
+    with dissolve
     pause
     jump barracks
 

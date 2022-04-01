@@ -2,19 +2,19 @@
 default heaven_or_hell_fork_beduins_camp = pnco(
     "Beduins camp",
     None,
-    (1574, 954),
+    (1274, 954),
     Jump('beduins_camp'),
     )
 default heaven_or_hell_fork_heaven_oasis = pnco(
     "Heaven oasis",
     None,
-    (1569, 249),
+    (1169, 549),
     Jump('heaven_oasis'),
     )
 default heaven_or_hell_fork_old_tomb = pnco(
     "Old tomb",
     None,
-    (131, 593),
+    (231, 543),
     Jump('old_tomb'),
     )
 label old_tomb:
@@ -40,7 +40,8 @@ label heaven_or_hell_fork:
         $ all_places.append(heaven_or_hell_fork_map)
     scene
     show bg heaven_or_hell_fork onlayer bg
-    show screen pnc(abdul, heaven_or_hell_fork_map)
+    show screen pnc(hero, heaven_or_hell_fork_map)
+    with dissolve
     pause
     jump heaven_or_hell_fork
 

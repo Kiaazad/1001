@@ -103,7 +103,8 @@ image bg street = "bg/street/bg.webp"
 label street:
     scene
     show bg street onlayer bg
-    show screen pnc(abdul, street_map)
+    show screen pnc(hero, street_map)
+    with dissolve
     pause
     jump street
 
@@ -149,8 +150,8 @@ default rahman_u = unit(
 label blacksmith:
     scene
     show rahman normal
-    rah "Abdul my friend, what you got for me today?"
-    abd "Maybe later Rahman."
+    rah "My friend, what you got for me today?"
+    abd "Maybe later."
     rah "Alright."
     show rahman normal at right with move
     call screen shop(s = rahman_u)
@@ -223,7 +224,7 @@ label beggar:
     menu:
         "Here's 10 dinars..." if hero.cash > 9:
             abd "Here, take this 10 dinars."
-            $ abdul.paidcash(10)
+            $ hero.paidcash(10)
             "Beggar" "Thank you, the God's blessing be upon you."
         "I don't have anything...":
             abd  "I don't have anything right now."

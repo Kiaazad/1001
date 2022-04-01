@@ -81,7 +81,8 @@ image bg bazaar = "bg/bazaar/bg.webp"
 label bazaar:
     scene
     show bg bazaar onlayer bg
-    show screen pnc(abdul, bazaar_map)
+    show screen pnc(hero, bazaar_map)
+    with dissolve
     pause
     jump bazaar
 
@@ -246,7 +247,7 @@ default akbar = unit(
 label akbars_shack:
     scene
     show akbar normal
-    akb "Ah, Abdul. what can I help you with?"
+    akb "Welcome, welcome. what can I help you with?"
     abd "Do you need firewood today?"
     akb "Yes. How much are you selling."
     show akbar normal at right with move
@@ -283,10 +284,10 @@ label hakim:
     scene
     show hakim normal
     if not "first" in hakim_u.flags:
-        hak "Ah, Abdul, how are you today, are you feeling sick again?"
+        hak "Welcome strange, how are you today, are you feeling sick?"
         $ hakim_u.add_flag("first")
     else:
-        hak "Abdul, you're back."
+        hak "Ah, you're back."
     menu:
         # planted_evidence
         "I just came to say hi." if qlog.has(planted_evidence) == "Active" and hero.has(the_free_lie_book) and len(planted_evidence.info) < 2:
@@ -317,7 +318,7 @@ label hakim:
             abd "What should we do?"
             hak "I would run to Jafar, he was the wise man to know what to do, but he's g...{w=.2}{nw}"
             abd "Yes! I can ask him!"
-            hak "He's no more Abdul."
+            hak "But he's no more."
             abd "Emmmm..."
             abd "I know somebody as wise as Jafar. I can ask him."
             hak "Who?"
@@ -354,7 +355,7 @@ label hakim:
                         hak "This should be enough."
                         abd "I'll be right back."
                 $ planted_evidence.extend(_("Buy a bottle of wine for Hakim."))
-            hak "Thank you, you're a savior Abdul."
+            hak "Thank you, you're a savior."
             jump bazaar
         "I got the wine." if qlog.has(planted_evidence) == "Active" and planted_evidence.info[-1] in ["Buy a bottle of wine for Hakim."] and hero.has(wine):
             abd "I got the wine Hakim."
@@ -406,7 +407,7 @@ label hakim:
                         hak "This should be enough."
                         abd "I'll be right back."
                 $ planted_evidence.extend(_("Buy a bottle of wine for Hakim."))
-            hak "Thank you, you're a savior Abdul."
+            hak "Thank you, you're a savior."
             jump bazaar
 
         "Not today..." if not "not today" in hakim_u.flags:
@@ -419,20 +420,20 @@ label hakim:
             abd "Found anything to erect old men yet Hakim?"
             hak "Ah hahaha, This joke again? Let me know if there's anything I can do for you."
             abd "Sure. I'll take a look."
-        "I've found this lamp..." if abdul.has(black_lamp) and not "shown lamp" in hakim_u.flags:
+        "I've found this lamp..." if hero.has(black_lamp) and not "shown lamp" in hakim_u.flags:
             $ hakim_u.add_flag("shown lamp")
             abd "I've found this lamp hakim."
             abd "Do you want to buy it?"
             hak "Hmmm... I do need a good old lamp for my nightly reading sessions."
             hak "Looks fine... How much are you selling it?"
             abd "For you hakim, 2000!"
-            hak "You know I can't afford that abdul."
+            hak "You know I can't afford that."
             hak "1500?"
             menu:
                 "Sure":
                     abd "Sure"
-                    hak "Thank you abdul. I'll make it up to you"
-                    $ abdul.sell(black_lamp, 1, hakim_u, 1500)
+                    hak "Thank you. I'll make it up to you"
+                    $ hero.sell(black_lamp, 1, hakim_u, 1500)
                     hak "Do you want to buy something as well?"
                     abd "Sure."
                 "Too low!":
@@ -478,12 +479,12 @@ default tailor_u = unit(
 label tailor:
     scene
     show farrokh normal
-    far "Do you need another stitching, Abdul?"
+    far "Do you need stitching? Or new clothing?"
     menu:
         "Not today...":
-            abd "Not today Farrokh, I'm just browsing."
+            abd "Not today, I'm just browsing."
             far "Alright then, tell me if anything catches your eye."
-        "I've found this lamp..." if abdul.has(black_lamp) and not "shown lamp" in tailor_u.flags:
+        "I've found this lamp..." if hero.has(black_lamp) and not "shown lamp" in tailor_u.flags:
             $ tailor_u.add_flag("shown lamp")
             abd "I've found this lamp in the desert."
             far "Hmmm... show it to Akbar. Or Hakim."
@@ -509,9 +510,9 @@ define fat = Character("Fatti", color="#4ff", what_text_color="#dff")
 label bazaar_fatti:
     scene
     show fatti normal
-    fat "What are you shopping for Abdul?"
+    fat "What are you shopping for?"
     abd "Nothing for now."
-    fat "You should buy something to eat Abdul, you're wasting away."
+    fat "You should buy something to eat, you're wasting away."
     jump bazaar
 
 

@@ -50,7 +50,7 @@ image bg jail = "bg/jail/bg.webp"
 label jail:
     scene
     show bg jail onlayer bg
-    show screen pnc(abdul, jail_map)
+    show screen pnc(hero, jail_map)
     pause
     jump jail
 

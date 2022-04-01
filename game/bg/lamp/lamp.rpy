@@ -153,7 +153,7 @@ image bg lamp = "#000"
 label inside_lamp:
     scene
     show bg lamp onlayer bg
-    show screen pnc(abdul, lamp_map)
+    show screen pnc(hero, lamp_map)
     pause
     jump inside_lamp
 
@@ -171,11 +171,15 @@ label lamp_fight:
             python:
                 d = renpy.random.randint(1,5)
                 enemies = []
+                loot = [
+                    [None, 200],
+                    [nuru_gel, 2],
+                ]
                 for i in range(d):
                     n = renpy.random.choice(all_demons)
                     l = main_fighter.level + renpy.random.randint(-3, 3)
                     enemies.append(fighter(n, l, "Demon"))
-            call screen battle(enemies)
+            call screen battle(enemies, loot)
     jump inside_lamp
 
 label lamp_harem:
@@ -260,7 +264,7 @@ label lamp_jafar:
         "I've got the money." if hero.cash > 2000 and qlog.has(cash_in_hand) == "Active":
             abd "I've got the money."
             jaf "Excellent!"
-            $ abdul.got(ring_recipe, 1)
+            $ hero.got(ring_recipe, 1)
             jaf "take this to the jeweller in bazaar and tell him to make a copper ring as instructed."
             abd "Why not bronze?"
             jaf "Bronze is too shiny, nobody will steal a copper ring from you."

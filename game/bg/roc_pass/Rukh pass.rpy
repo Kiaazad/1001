@@ -162,7 +162,7 @@ image bg roc_pass = "bg/roc_pass/bg.webp"
 label roc_pass:
     scene 
     show bg roc_pass onlayer bg
-    show screen pnc(abdul, roc_pass_map)
+    show screen pnc(hero, roc_pass_map)
     with dissolve
     pause
     jump roc_pass

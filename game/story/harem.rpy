@@ -72,7 +72,7 @@ label harem:
                 "Go to the angry one.":
                     show halia normal at midright
                     abd "hi."
-                    show black # Halia knocks abdul out
+                    show black # Halia knocks hero out
                     $ renpy.pause(3)
                     show huria normal behind black
                     hide black with dissolve
@@ -117,7 +117,7 @@ label harem:
                     hal "Stop mumbling and walk faster!"
                     jump lamp_visit_back_to_jafar
         "Jump right into the water.":
-            # show bg cg_abdul_bathing
+            # show bg cg_hero_bathing
             show hulu normal with dissolve
             hul "We have a tub you know!"
             abd "Oh, Hi! I didn't want to disturb you ladies."
@@ -159,8 +159,15 @@ label harem_bath:
     hul "You're cruel Halia."
     hal "Your idea, your mess, your job to clean!"
     hul "Alright, what's your name stud?"
-    abd "Abdul."
-    hul "Don't be a stranger, pay us a visit soon."
+    python:
+        name = renpy.input(_("My name is..."))
+        name = name.strip()
+        if not name:
+            name = "Smog"
+        hero.name = name
+        abd.name = name
+    abd "[hero.name]."
+    hul "Don't be a stranger [hero.name], pay us a visit soon."
     hul "Come again, and again, and again..."
     hal "Stop it..."
     abd "Um... sure?"

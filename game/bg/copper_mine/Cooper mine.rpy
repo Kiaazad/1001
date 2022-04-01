@@ -17,7 +17,7 @@ image bg cooper_mine = "bg/roc_pass/bg.webp"
 label cooper_mine:
     scene 
     show bg cooper_mine onlayer bg
-    show screen pnc(abdul, cooper_mine_map)
+    show screen pnc(hero, cooper_mine_map)
     with dissolve
     pause
     jump cooper_mine

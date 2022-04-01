@@ -4,10 +4,12 @@
 ## Load and Save screens #######################################################
 
 screen save():
+    modal True
     tag menu
     use file_slots(_("Save"))
 
 screen load():
+    modal True
     tag menu
     use file_slots(_("Load"))
 

@@ -12,7 +12,7 @@ image rasoul idle:
 label rasoul_arc_1:
     scene
     show bg street onlayer bg
-    show screen pnc(abdul, street_map)
+    show screen pnc(hero, street_map)
     show ras normal with dissolve
     menu:
         "I didn't do anything wrong...":
@@ -50,16 +50,16 @@ label rasoul_arc_1:
 
     scene
     show bg bazaar onlayer bg
-    show screen pnc(abdul, bazaar_map)
+    show screen pnc(hero, bazaar_map)
     show ras normal with dissolve
     ras "Walk faster!"
     "{nw}"
     scene
     show bg poor onlayer bg
-    show screen pnc(abdul, poor_map)
+    show screen pnc(hero, poor_map)
     "{w=1}{nw}"
     show bg barracks onlayer bg
-    show screen pnc(abdul, barracks_map)
+    show screen pnc(hero, barracks_map)
     show ras normal with dissolve
     ras "Guard!"
     show ras normal
@@ -119,7 +119,7 @@ default jail_chest = inventory(
 label rasoul_arc_2:
     scene
     show bg jail onlayer bg
-    # show screen pnc(abdul, barracks_map)
+    # show screen pnc(hero, barracks_map)
     show guard_2 normal with dissolve
     guard_2 "I've got a guest for you Qasim."
     qasim "Coming..."
@@ -223,7 +223,7 @@ label rasoul_arc_3:
     "..."
     scene
     show bg jail onlayer bg
-    # show screen pnc(abdul, barracks_map)
+    # show screen pnc(hero, barracks_map)
     show qasim normal with dissolve
     abd "Can I have my belongings back?"
     qasim "What belongings?"
@@ -244,7 +244,7 @@ label rasoul_arc_end:
     scene
     hide screen pnc
     show bg jail onlayer bg
-    # show screen pnc(abdul, barracks_map)
+    # show screen pnc(hero, barracks_map)
     show qasim normal with dissolve
     qasim "Give me your belongings."
     abd "Why?"
@@ -383,7 +383,7 @@ image bg widows house = "bg/widows_house/bg.webp"
 label visiting_widow:
     scene
     show bg poor onlayer bg
-    show screen pnc(abdul, poor_map)
+    show screen pnc(hero, poor_map)
     show ras normal with dissolve
     ras "So, what can you do for me?"
     abd "Anything!"
@@ -408,7 +408,7 @@ label visiting_widow:
     "..."
     ras "Come on, time to go."
     show bg poor onlayer bg with dissolve
-    show screen pnc(abdul, poor_map)
+    show screen pnc(hero, poor_map)
     $ poor_map.add(widows_house)
     "..."
     ras "What?"
@@ -428,13 +428,13 @@ label visiting_widow:
     "{nw}"
     scene
     show bg bazaar onlayer bg
-    show screen pnc(abdul, bazaar_map)
+    show screen pnc(hero, bazaar_map)
     show ras normal with dissolve
     "{w=1}{nw}"
 
     scene
     show bg street onlayer bg
-    show screen pnc(abdul, street_map)
+    show screen pnc(hero, street_map)
     show ras normal with dissolve
     "{w=1}{nw}"
 
@@ -447,7 +447,7 @@ default dirt_on_haji = quest(
 label rasoul_needs_dirt:
     scene
     show bg rich onlayer bg
-    show screen pnc(abdul, rich_map)
+    show screen pnc(hero, rich_map)
     show ras normal with dissolve
     ras "Here we are."
     abd "You're not planning to drag me off to jail again, are you?"

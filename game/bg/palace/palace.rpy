@@ -56,6 +56,7 @@ label palace:
     scene
     # show bg palace onlayer bg
     show screen pnc2(palace_map)
+    with dissolve
     pause
     jump palace
 
