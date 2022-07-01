@@ -26,7 +26,7 @@ default heaven_oasis_heaven_or_hell_fork = pnco(
     )
 
 default heaven_oasis_loc = pncs(
-    "Main street",
+    "Heaven oasis",
     [
         heaven_oasis_viking,
         heaven_oasis_heaven_or_hell_fork,
@@ -88,8 +88,8 @@ default vikings_note = item(
     _("viking's note"),
     _("A note with the viking's signature."),
     "vikings_note",
-    3750,
-    [],
+    0,
+    ["unsellable"],
     )
 label the_viking:
     scene

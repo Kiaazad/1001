@@ -25,7 +25,7 @@
                 msg.msg("Enough salt to kill.")
                 self.water += 200
             
-            r = renpy.random.randint(0, 100)
+            r = random.randint(0, 100)
             if r < filth:
                 msg.msg("You'll get sick.")
             if self.water > 1000:
@@ -66,7 +66,6 @@
 
             self.interests = interests
             self.reject = reject
-            self.reject.append("unsellable")
             self.flags = []
             self.affection = 0
 
@@ -96,7 +95,7 @@
                 msg.msg("Enough salt to kill.")
                 self.water += 200
             
-            r = renpy.random.randint(0, 100)
+            r = random.randint(0, 100)
             if r < filth:
                 msg.msg("You'll get sick.")
             if self.water > 1000:

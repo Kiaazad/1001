@@ -15,7 +15,7 @@ default vantage_point_cg = pnco(
     )
 
 default vantage_point_map = pncs(
-    "Agrabah",
+    "Vantage point",
     [
         vantage_point_rich,
         vantage_point_cg,
@@ -48,5 +48,4 @@ label vantage_point_cg:
         abd "Naughty naughtily girl."
     else:
         abd "Can't see much"
-    "Under development."
     jump vantage_point

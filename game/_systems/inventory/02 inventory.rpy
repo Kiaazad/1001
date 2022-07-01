@@ -28,9 +28,9 @@
         def change(self, slot):
             self.selected = slot
         def pick_pocket(self, target):
-            amount = renpy.random.randint(0, target.cash)
-            chance = renpy.random.randint(0,100)
-            fail = renpy.random.randint(0,100)
+            amount = random.randint(0, target.cash)
+            chance = random.randint(0,100)
+            fail = random.randint(0,100)
             if fail > self.pick_pocket_skill:
                 if target == hero:
                     msg.msg(_("You felt something fishy is going on."))

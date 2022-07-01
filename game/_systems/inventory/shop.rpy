@@ -24,7 +24,7 @@
     #     s.togos_collect()
     #     c.togos_collect()
 
-    def is_interested(a, b):
+    def not_interested(a, b):
         for i in a:
             if i in b:
                 return True
@@ -32,7 +32,9 @@
             return False
 
     def buy_one(item, s, c):
-        if is_interested(item.item.tags, c.reject):
+        if "unsellable" in item.item.tags:
+            msg.msg("You can't sell that.")
+        elif not_interested(item.item.tags, c.reject):
             msg.msg("The shop keeper isn't interested in that.")
         else:
             if c.cash < item.item.val*s.markup:
@@ -44,7 +46,9 @@
                 s.bags[0].rem(item.item, 1)
             
     def buy_all(item, s, c):
-        if is_interested(item.item.tags, c.reject):
+        if "unsellable" in item.item.tags:
+            msg.msg("You can't sell that.")
+        elif not_interested(item.item.tags, c.reject):
             msg.msg("The shop keeper isn't interested in that.")
         else:
             if c.cash < (item.item.val*item.qtt)*s.markup:

@@ -434,11 +434,11 @@ label ch3_fight(j=False):
             call screen battle([training_dummy])
         "Fight demons.":
             python:
-                d = renpy.random.randint(1,5)
+                d = random.randint(1,5)
                 enemies = []
                 for i in range(d):
-                    n = renpy.random.choice(all_demons)
-                    l = main_fighter.level + renpy.random.randint(-3, 3)
+                    n = random.choice(all_demons)
+                    l = main_fighter.level + random.randint(-3, 3)
                     enemies.append(fighter(n, l, "Demon"))
             call screen battle(enemies)
     if j:

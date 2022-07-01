@@ -43,7 +43,7 @@ init python:
                     else:
                         if click.items:
                             for i in click.items:
-                                if isinstance(i, (int, long)):
+                                if isinstance(i, int):
                                     hero.gotcash(i)
                                 else:
                                     hero.got(i[0], i[1])

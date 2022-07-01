@@ -24,10 +24,6 @@ default agrabahs_gate_farms = pnco(
     Jump('farms'),
     )
 
-label farms:
-    "not ready yet"
-    jump agrabahs_gate
-
 
 # Random
 default agrabahs_gate_nasim = pnco(
@@ -90,7 +86,7 @@ default agrabahs_gate_black_scorpion = pnco(
     Jump('agrabahs_gate_black_scorpion'),
     )
 label agrabahs_gate_black_scorpion:
-    $ e = fighter("Black scorpion", renpy.random.randint(2,4), "Beast")
+    $ e = fighter("Black scorpion", random.randint(2,4), "Beast")
     $ loot = [
         [scorpion_tail, 100],
         [thorns, 14],
@@ -98,6 +94,8 @@ label agrabahs_gate_black_scorpion:
         [string, 2],
     ]
     call screen battle([e], loot)
+    if _return == "escaped":
+        jump street
     jump agrabahs_gate
 
 

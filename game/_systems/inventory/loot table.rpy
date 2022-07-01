@@ -3,7 +3,7 @@
         sum1 = 0
         for i in table:
             sum1 += i[1]
-        r = renpy.random.randint(1,sum1)
+        r = random.randint(1,sum1)
         sum2 = 0
         for i in table:
             sum2 += i[1]

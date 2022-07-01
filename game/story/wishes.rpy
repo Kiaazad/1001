@@ -54,8 +54,8 @@ label wishes:
                     jump wish_for_my_cat_to_have_a_longer_lifespan
         "I wish I can...":
             menu:
-                "I wish I can breath under water.":
-                    jump wish_i_can_breath_under_water
+                "I wish I can breathe under water.":
+                    jump wish_i_can_breathe_under_water
         "I wish to not...":
             menu:
                 "I wish to not pay taxes.":
@@ -70,12 +70,12 @@ label wishes:
                     jump wish_for_a_stallion
                 "I wish for a slave.":
                     jump wish_for_a_slave
-                "I wish for everlasting dinar.":
-                    jump wish_for_everlasting_dinar
+                "I wish for everlasting dinner.":
+                    jump wish_for_everlasting_dinner
                 "I wish for an everlasting lavash bread.":
                     jump wish_for_everlasting_lavash
-                "I wish for a jar of vine that never gets empty.":
-                    jump wish_for_a_jar_of_vine_that_never_gets_empty
+                "I wish for a jar of wine that never gets empty.":
+                    jump wish_for_a_jar_of_wine_that_never_gets_empty
                 "I wish for a jewelry store.":
                     jump wish_for_a_jewelry_store
                 "I wish for a moneychanger store.":
@@ -105,13 +105,13 @@ label wish_to_be_sultan:
 
 label wish_to_be_god:
     abd "I wish to be a God."
-    jaf "so you want to be something that doesn't exist?"
+    jaf "So you want to be something that doesn't exist?"
     abd "Huh?"
     jaf "As you wish then!"
     abd "But God does exist!"
     jaf "Yeah, yeah. There will be people believing you exist as well."
     abd "But...{nw}"
-    jaf "Too late for buts Abdul. You are done for now, this was your last mistake!"
+    jaf "Too late for buts. You are done for now, this was your last mistake!"
     # we should erase all save slots at this point to troll the player
     return
 
@@ -123,24 +123,24 @@ label wish_to_be_immortal:
 label wish_to_be_indestructible:
     abd "I wish to be indestructible."
     menu:
-        jaf "As a rock?"
+        jaf "Like rock?"
         "Yes":
-            jaf "if that's your wish, you'll be like a rock. hard, heavy and lifeless!"
+            jaf "If that's your wish, you'll be like a rock. hard, heavy and lifeless!"
         "No":
             menu:
-                jaf "As an iron?"
+                jaf "Like iron?"
                 "Yes":
-                    jaf "if that's your wish, you'll be like an iron. hard, heavy and lifeless!"
-                "no":
+                    jaf "If that's your wish, you'll be like iron. hard, heavy and lifeless!"
+                "No":
                     menu:
                         jaf "Then what?"
-                        "a statue!":
+                        "A statue!":
                             jaf "Then a statue you will be!"
-                        "a tree!":
+                        "A tree!":
                             jaf "Then a tree you will be!"
-                        "the hercules!":
+                        "The hercules!":
                             jaf "Then a myth you will be!"
-                        "the God!!":
+                        "The God!!":
                             jaf "Then a lie you will be!"
     return
 
@@ -161,7 +161,7 @@ label wish_to_be_rich:
     abd "Imagine what I can spend it on! A soft bed, a warm meal, and delicious alcohols..."
     abd "..."
     jaf "What?"
-    abd "These coins have your faces on it. Even the bills have your faces too. That's not right." 
+    abd "These coins have your face on it. Even the bills have your face too. That's not right." 
     abd "Then that means..."
     abd "It's fake?"
     jaf "You asked to be rich, so I granted your wish. If you're lucky, you might get a few cents from all of these."
@@ -178,7 +178,7 @@ label wish_to_be_healthy:
 
 label wish_to_be_clever:
     abd "I wish to be clever."
-    jaf "Okay, you are smart and all but it's not a guarantee that you'll become a successful business owner again."
+    jaf "Okay, you are smart and all but it's not a guarantee that you'll be successful."
     jaf "Also, your cleverness will get some haters because you'll make people feel even more dumb about themselves." 
     jaf "Good luck."
     return
@@ -237,7 +237,7 @@ label wish_to_have_a_neat_dress_thats_always_fashionable:
 label wish_to_have_a_well_that_never_runs_dry:
     abd "I wish to have a well that never runs dry."
     jaf "It wouldn't be hard to keep the bottom of a well moist. Here we...{nw}"
-    abd "Wait! Moist? but I want water."
+    abd "Wait! Moist? But I want water."
     abd "A well that has no water to fill a bucket is called a dry well."
     abd "Then I want a well that is full of water."
     jaf "That was a close call wasn't it? Be more specific next time."
@@ -252,7 +252,7 @@ label wish_to_have_a_sword_that_sharpens_itself:
 # my
 label wish_my_mother_was_alive:
     abd "I wish my mother was alive."
-    jaf "She's alive alright, though she can't do much more than suffering with her flesh rotting away."
+    jaf "She's alive alright, though she can't do much more than suffer with her flesh rotting away."
     return
 
 label wish_for_my_cat_to_have_a_longer_lifespan:
@@ -262,11 +262,11 @@ label wish_for_my_cat_to_have_a_longer_lifespan:
 
 
 # I can
-label wish_i_can_breath_under_water:
-    abd "I wish I can breath under water."
+label wish_i_can_breathe_under_water:
+    abd "I wish I can breathe under water."
     jaf "Under water you say? Very well, you shall get your wish."
-    jaf "abaladu'vali'na."
-    jaf "There, now do you need a body of water to breath under?"
+    jaf "Abaladu'vali'na."
+    jaf "There, now do you need a body of water to breathe under?"
     menu:
         "Yes":
             jaf "Let me send you under then."
@@ -274,11 +274,11 @@ label wish_i_can_breath_under_water:
             jaf "That's because you already wished for something you already have."
             abd "I did?"
             jaf "Yes of course, you can breathe anywhere."
-            jaf "The reason people drown is the lack of breathable air under water, it's not their inability to breath there."
+            jaf "The reason people drown is the lack of breathable air underwater, it's not their inability to breath there."
             abd "Then I get my wish back?"
             jaf "No!"
             abd "Why not? You didn't give me anything!"
-            jaf "You wished for something you already have. and I granted it. Your mistake, not my problem."
+            jaf "You wished for something you already have, and I granted it. Your mistake, not my problem."
     return
 
 # to not
@@ -303,7 +303,36 @@ label wish_for_a_gold_fish:
 
 label wish_for_a_flying_carpet:
     abd "I wish for a flying carpet."
-    jaf "."
+    jaf "A viola."
+    jaf "Here's your flying carpet."
+    abd "looks like a normal carpet."
+    jaf "Do you want to see it fly."
+    menu:
+        "Yes.":
+            abd "Yes"
+            jaf "Go!"
+            abd "Hey it is flying..."
+            abd "... Away?"
+            abd "it's not coming back is it?"
+            jaf "No!"
+            abd "But I wanted to be on it."
+            jaf "Sure!"
+            "Poof"
+        "Not yet!":
+            abd "Not yet, let me sit on it."
+            jaf "Sure!"
+            abd "Alright, I'm ready."
+            jaf "Go!"
+    abd "Woohoo..."
+    "Hours later."
+    abd "Alright, that's enough for today, let's go down."
+    abd "Jafar?"
+    abd "Jafar!!"
+    "Poof!"
+    jaf "Yes?"
+    abd "It's not stopping."
+    jaf "You didn't ask for a stopping carpet did you?"
+    
     return
 
 label wish_for_a_stallion:
@@ -311,15 +340,15 @@ label wish_for_a_stallion:
     show jaf normal
     jaf "A stallion? Sure..."
     show jaf magic
-    jaf "ajji, maji, ahhhhh..."
+    jaf "Ajji, maji, ahhhhh..."
     show jaf normal
     abd "Whoa!"
     abd "A real live horse! I've always wanted one for years!"
-    abd "You even put the equipments on too!"
+    abd "You even put the saddle on too!"
     jaf "You wanna ride it?"
     abd "You know what? Heck yeah, I'm going to ride it!"
-    abd "Ah! It should the same as riding a camel, so it should be easy!"
-    abd "Hmm... But I never ride a camel before, but I'm sure I'll be fine."
+    abd "Ah! It should be the same as riding a camel, so it should be easy!"
+    abd "Hmm... I've never ridden a camel before, but I'm sure I'll be fine."
     abd "Hut hut hut!"
     "..."
     show jaf disappointed 
@@ -342,7 +371,7 @@ label wish_for_a_slave:
     jaf "Here you are, let's see how long he'll be able to serve you. He might escape by now."
     return
 
-label wish_for_everlasting_dinar:
+label wish_for_everlasting_dinner:
     abd "I wish for everlasting dinner."
     jaf "Sure." 
     abd "Finally! I get to eat some gourmet food!"
@@ -383,7 +412,7 @@ label wish_for_everlasting_lavash:
     jaf "No, that's exactly what you wished for."
     return
 
-label wish_for_a_jar_of_vine_that_never_gets_empty:
+label wish_for_a_jar_of_wine_that_never_gets_empty:
     abd "I wish for a jar of wine that never gets empty."
     jaf "Here."
     jaf "It has a rock that won't come out... soooo..."
@@ -398,8 +427,8 @@ label wish_for_a_jewelry_store:
     jaf "Ajjj, ahhhh."
     show jaf normal
     jaf "Here you are."
-    abd "Whoa! Look at all the jewelries I can sell for profit!" 
-    abd "Imagine that! A warm bed to sleep on, eating delicous meals three times a day, and I can make my own private harem too!"
+    abd "Whoa! Look at all the Jewelry I can sell for profit!" 
+    abd "Imagine that! A warm bed to sleep on, eating delicious meals three times a day, and I can make my own private harem too!"
     show jaf smile
     jaf "Yeah... good luck with that. You know that all of them are fake anyway."
     abd "Wait, what?"
@@ -419,7 +448,7 @@ label wish_for_a_cup_of_water:
     abd "I wish for a cup of water."
     jaf "As you wish."
     abd "What the-"
-    abd "Did something splashed at my face?"
+    abd "Did something splash on my face?"
     show jaf smile
     jaf "That was your water. It was around a cup."
     abd "..."
@@ -435,9 +464,9 @@ label wish_to_move_to_oasis:
     show jaf normal
     abd "Whoa! The Oasis..."
     abd "Wait, what the fuck?"
-    abd "It's just a background art?" #Or a white background
+    abd "It's just background art?" #Or a white background
     show jaf smile
-    jaf "Looks lovely, isn't it?"
+    jaf "Looks lovely, does't it?"
     jaf "Now you can imagine how it's like to be in the oasis."
 
 

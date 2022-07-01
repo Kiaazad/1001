@@ -117,12 +117,12 @@ label agrabah:
 label sleeping:
     menu:
         "Sleep.":
-            $ hours = renpy.random.randint(3,10)
+            $ hours = random.randint(3,10)
             show screen time_pass(hours)
             $ main_fighter.sleep(hours)
             "Resting for a while."
         "Nap.":
-            $ hours = renpy.random.randint(1,3)
+            $ hours = random.randint(1,3)
             show screen time_pass(hours)
             $ main_fighter.sleep(hours)
             "Resting for a while."

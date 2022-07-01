@@ -4,7 +4,7 @@ init python:
         for j in places:
             for i in j.clicks:
                 if i.regen and i.hidden:
-                    chance = renpy.random.randint(0, 100)
+                    chance = random.randint(0, 100)
                     if chance < i.regen:
                         i.hidden = False
 
@@ -35,6 +35,7 @@ init python:
             self.on_shift = 1
             self.aggressive = aggressive
             self.triggered = False
+            self.alive = True
         def hovered(self, h):
             if self.hoffset:
                 self.hov = h
@@ -63,7 +64,7 @@ init python:
                     else:
                         if click.items:
                             for i in click.items:
-                                if isinstance(i, (int, long)):
+                                if isinstance(i, int):
                                     p.gotcash(i)
                                 else:
                                     p.got(i[0], i[1])
@@ -83,6 +84,9 @@ init python:
             self.clicks.append(click)
             if cond:
                 self.cond.append(cond)
+        def remove(self, click):
+            self.clicks.remove(click)
+
 
         def idle_tick(self):
             self.idle += 1
@@ -132,14 +136,13 @@ screen pnc(p , g):
         else:
             if not i.hidden:
                 button:
-                    
                     anchor 0.0,0.0 
                     pos i.pos
                     if i.img:
                         background None padding 0,0
                         fixed fit_first True:
                             add i.img at pnc_item_fade(a = i.on_shift)
-                            if i.enabled and i.aggressive and not i.triggered:
+                            if i.enabled and i.aggressive  and i.alive and not i.triggered:
                                 add "aggressive_alert" align .5,.5
                     else:
                         text i.name
@@ -148,7 +151,7 @@ screen pnc(p , g):
                             focus_mask True
                             at map_transform
                             action Function(g.clicked, i, p), Function(g.on_show), i.act
-                            if i.aggressive and not i.triggered:
+                            if i.aggressive and i.alive and not i.triggered:
                                 timer random.randint(1,5) repeat True action Function(i.hovered, 1), Function(i.trigger), i.act
                             else:
                                 hovered Function(i.hovered, 1)
@@ -209,8 +212,8 @@ transform tut_clicked(p):
     ease 1 zoom 2 alpha 0
 
 transform tut_pointer(p):
-    xoffset renpy.random.randint(-200, 200)
-    yoffset renpy.random.randint(-200, 200)
+    xoffset random.randint(-200, 200)
+    yoffset random.randint(-200, 200)
     alpha 0
     pause p
     ease .2 alpha 1

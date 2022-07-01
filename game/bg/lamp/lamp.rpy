@@ -169,15 +169,15 @@ label lamp_fight:
             call screen battle([training_dummy])
         "Fight demons.":
             python:
-                d = renpy.random.randint(1,5)
+                d = random.randint(1,5)
                 enemies = []
                 loot = [
                     [None, 200],
                     [nuru_gel, 2],
                 ]
                 for i in range(d):
-                    n = renpy.random.choice(all_demons)
-                    l = main_fighter.level + renpy.random.randint(-3, 3)
+                    n = random.choice(all_demons)
+                    l = main_fighter.level + random.randint(-3, 3)
                     enemies.append(fighter(n, l, "Demon"))
             call screen battle(enemies, loot)
     jump inside_lamp
@@ -338,10 +338,10 @@ label lamp_jafar:
             jaf "Let me guess, Ahmad?"
             abd "I think so, how do you know?"
             jaf "Caught him for picking pockets long ago."
-            abd "But he still have both hands!"
+            abd "But he still has both hands!"
             jaf "Yes, I don't like cutting parts of people."
             jaf "And his skilled hands where more useful to me attached to his arms."
-            jaf "I've let him keep them in exchange for him acquiring some items for me."
+            jaf "I let him keep them, and in exchange he acquired some items for me."
             jaf "And his promise to find an honorable line of work of course."
             jaf "You should go back and talk to him soon."
             abd "Why? I'm sure he'll deny everything."

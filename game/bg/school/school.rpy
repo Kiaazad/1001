@@ -95,7 +95,7 @@ label school_teacher:
                 abd "I need some books."
                 tea "Our library have suffered a great loss, I can't sell you any books right now."
                 abd "What happened."
-                tea "The guards have confiscated all books that Jafar have donated in the years he have been the royal Vizier."
+                tea "The guards confiscated all the books Jafar donated as the royal Vizier."
                 abd "I see..."
                 tea "Only a man of culture seeks books, do you have any books to donate?"
                 tea "Or I can buy them from you if the price is fair."

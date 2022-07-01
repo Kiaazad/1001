@@ -70,9 +70,9 @@ init python:
             return self.day % 7
         def speed_change(self, d = "reset"):
             if d == "up" and self.speed > 0.1:
-                self.speed -= 0.1
+                self.speed = round(self.speed - 0.1, 2)
             elif d == "down" and self.speed < 3.0:
-                self.speed += 0.1
+                self.speed = round(self.speed + 0.1, 2)
             elif d == "reset":
                 self.speed = 2.0
 
@@ -120,7 +120,7 @@ style clock_hbox is zero
 screen time_pass(minutes):
     modal True
     default m = minutes*15
-    text str(m/15)
+    text str(int(m/15))
     if m > 0:
         timer .1 repeat True action Function(calendar.tick, 5, rest = True), SetScreenVariable("m", m-5)
     else:

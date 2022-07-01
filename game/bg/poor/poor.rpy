@@ -200,7 +200,7 @@ label petros_shop:
         abd "Here."
         abd "He gave me this."
         pet "Another I owe you?"
-        pet "Well, he does pay hid debts every now and then."
+        pet "Well, he does pay his debts every now and then."
         pet "Alright, wait here."
         hide petros with moveoutright
         pause 4
@@ -424,7 +424,7 @@ label widows_house:
     scene
     show bg widows house onlayer bg
     hide screen pnc
-    show wid normal with dissolve
+    show widow normal with dissolve
     "..."
     menu:
         "Rasoul sent me.":

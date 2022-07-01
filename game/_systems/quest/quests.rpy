@@ -109,7 +109,7 @@ screen quests(q = qlog):
                                 color colors[q.slc.stat]
 
     button:
-        align 0.0,0.0 margin 100,100
+        align 1.0,1.0 margin 100,100
         text "Return"
         action Hide("quests"), Return()
 

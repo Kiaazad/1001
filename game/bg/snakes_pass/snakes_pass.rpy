@@ -61,10 +61,10 @@ default snakes_pass_snake = pnco(
     "bg/snakes_pass/snake.webp",
     (434, 653),
     Jump('snakes_pass_snake'),
-    aggressive = True,
+    aggressive = False,
     )
 label snakes_pass_snake:
-    $ e = fighter("Cobra", renpy.random.randint(4, 8), "Beast")
+    $ e = fighter("Cobra", random.randint(4, 8), "Beast")
     $ loot = [
         [dead_snake, 80],
         [coal, 2],

@@ -45,8 +45,8 @@ style zero:
 
 transform btn:
     parallel:
-        xoffset renpy.random.randint(-1000, 1000) alpha 0 yzoom .01
-        pause renpy.random.random()/4
+        xoffset random.randint(-1000, 1000) alpha 0 yzoom .01
+        pause random.random()/4
         
         ease .2 xoffset 0 yzoom 1 alpha 1
     parallel:

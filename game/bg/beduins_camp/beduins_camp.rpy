@@ -49,6 +49,8 @@ label beduins_camp_sand_warrior:
         [None, 50],
     ]
     call screen battle([e], loot)
+    if _return == "escaped":
+        jump agrabahs_gate
     if hero.has(quartz_bit) and not qlog.has(a_diamond_to_sell):
         abd "A gem stone?"
         $ qlog.got(a_diamond_to_sell)

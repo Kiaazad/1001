@@ -36,7 +36,7 @@ init python:
                 for ii,i in enumerate(items):
                     self.add(i[0], i[1])
         def shuffle(self):
-            renpy.random.shuffle(self.items)
+            random.shuffle(self.items)
         def clear(self):
             self.items = [None]* self.slots
         def add(self, item, quantity):

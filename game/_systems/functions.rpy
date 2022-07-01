@@ -1,7 +1,7 @@
 ﻿init python:
     import random
     import time
-    random.seed(time.clock())
+    random.seed(time.perf_counter_ns())
 
 
 

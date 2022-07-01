@@ -44,18 +44,48 @@ default watch_tower_3 = pnco(
 
 
 # Fights
-
-default watch_tower_ogre = pnco(
-    "thorns",
-    "bg/watch_tower/ogre.webp",
-    (182, 660),
-    Jump('watch_tower_ogre'),
-    aggressive = True,
+image cerpenger guard idle:
+    "cerpenger_idle_1"
+    .1
+    "cerpenger_idle_2"
+    .1
+    "cerpenger_idle_3"
+    .1
+    repeat
+default cerpenger = pnco(
+    "Cerpenger guard",
+    "bg/watch_tower/cerpenger.webp",
+    (182, 600),
+    Jump('cerpenger'),
+    aggressive = False,
     )
-label watch_tower_ogre:
-    "The fight system is being reworked to fit the first person view."
+default snake_nest = pnco(
+    "Snake nest",
+    "bg/watch_tower/snake_nest.webp",
+    (185, 698),
+    Jump('snake_nest'),
+    )
+
+default cerpenger_guard = fighter("Cerpenger guard", 9, "Beast")
+label cerpenger:
+    "Cerpenger" "Hssss..."
+    $ loot = [
+        # [quartz_bit, 30],
+        [stick, 5],
+        [rope, 5],
+        [None, 50],
+    ]
+    call screen battle([cerpenger_guard], loot)
+    if _return == "escaped":
+        jump marble_quarry
+    if _return == "won":
+        $ watch_tower_loc.remove(cerpenger)
+        $ watch_tower_loc.add(snake_nest)
     jump watch_tower
 
+label snake_nest:
+    "You can't enter yet."
+    jump watch_tower
 
 
 default watch_tower_loc = pncs("The watch tower",
@@ -68,7 +98,7 @@ default watch_tower_loc = pncs("The watch tower",
         watch_tower_2,
         watch_tower_3,
 
-        watch_tower_ogre,
+        cerpenger,
 
     ], night = "bg/watch_tower/night.webp"
 

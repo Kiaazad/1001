@@ -41,7 +41,7 @@ label rasoul_arc_1:
             ras "No you won't!{w=.2}{nw}" with vpunch
             scene
             hide pnc
-            $ e = fighter("Rasoul", renpy.random.randint(8, 12) + main_fighter.level, "Beast")
+            $ e = fighter("Rasoul", random.randint(8, 12) + main_fighter.level, "Beast")
             call screen battle([e])
             jump agrabahs_gate
             pause 2
@@ -157,7 +157,7 @@ default planted_evidence = quest(
 label rasoul_arc_3:
     menu:
         "Sleep":
-            show screen time_pass(renpy.random.randint(3,10))
+            show screen time_pass(random.randint(3,10))
             "Resting for a while."
             jump rasoul_arc_3
         "Ask for food.":
@@ -318,7 +318,7 @@ label rasoul_arc_end:
 label rasoul_arc_end_jail:
     menu:
         "Sleep":
-            show screen time_pass(renpy.random.randint(3,10))
+            show screen time_pass(random.randint(3,10))
             "Resting for a while."
         "Guard.":
             abd "Guard...{w=.2} guard!"
@@ -354,7 +354,7 @@ label rasoul_arc_end_barter:
         jump rasoul_arc_end_barter
     else:
         if money_amount_barter < 2:
-            if money_amount < renpy.random.randint(500, 3050):
+            if money_amount < random.randint(500, 3050):
                 qasim "Fine, take the money and get lost."
                 $ hero.gotcash(money_amount)
                 jump barracks

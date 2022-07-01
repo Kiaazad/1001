@@ -32,7 +32,7 @@ label intro_0_1:
     abd "That isn't...{w=.4} a mirage."
     "..."
     abd "There's something shiny in the sand."
-    $ hero.got(black_lamp,1,002)
+    $ hero.got(black_lamp,1,2)
     hide des_0_shine with dissolve
     show cg found_lamp_1 with dissolve
     abd "An oil lamp?"
@@ -82,7 +82,7 @@ label intro_0_1:
             jaf "Do you know what holding my lamp means?"
             show jaf normal
             abd "Do... {w=.6}I get a wish."
-            jaf "Three wishes?"
+            jaf "Three wishes."
             abd "Three? How?"
             jaf "You rub my lamp, wish and I'll grant them."
             jaf "Yep! Those are the rules!"
@@ -103,9 +103,9 @@ label intro_0_1:
             abd "A deal?"
             jaf "Yes."
             jaf "If you promise to help me get my revenge from those three idiots..."
-            jaf "The bastards who trapped me in this thing...."
+            jaf "The bastards who trapped me in this lamp...."
             jaf "I'll let you give me your first wish... {w=.5}and second wish..."
-            jaf "Then I'll tell you how to avoid being screwed for your last wish."
+            jaf "Leaving you less chance to be screwed."
             abd "What do you mean by 'screwed?'"
             jaf "Well, under normal circumstances... {w=.5}I'd kill you with your own wish."
             abd "Wait, I've heard that Genies can't kill..."
@@ -113,7 +113,7 @@ label intro_0_1:
             abd "What you can live through?"
             jaf "You've just heard that one huh?"
             jaf "No! That was the old me..."
-            jaf "I was about to say: {w=.5}How easy is it to let people die on their own?"
+            jaf "I was about to say: {w=.5}How easy it is to let people die on their own?"
             abd "What do you mean?"
             menu:
                 jaf "No time to explain. {w=.5}What do you say? {w=.5}Do we have a deal?"

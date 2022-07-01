@@ -127,6 +127,9 @@ default roc_pass_little_thief = pnco(
     )
 label roc_pass_little_thief:
     call screen battle([little_thief])
+    if _return == "escaped":
+        jump agrabahs_gate
+    $ roc_pass_little_thief.alive = False
     jump roc_pass
 
 

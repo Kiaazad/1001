@@ -35,29 +35,27 @@
             self.agility = 2
         def sleep(self, amount):
             for i in range(amount):
-                self.health += self.max_health/20
+                self.health += int(self.max_health/20)
                 if self.health > self.max_health:
                     self.health = self.max_health
                 
-                self.mana += self.max_mana/20
+                self.mana += int(self.max_mana/20)
                 if self.mana > self.max_mana:
                     self.mana = self.max_mana
                 
-                self.stamina += self.max_stamina/10
+                self.stamina += int(self.max_stamina/10)
                 if self.stamina > self.max_stamina:
                     self.stamina = self.max_stamina
         def recover(self, amount):
             for i in range(amount):
-                self.mana += self.max_mana/40
+                self.mana += int(self.max_mana/40)
                 if self.mana > self.max_mana:
                     self.mana = self.max_mana
                 
-                self.stamina += self.max_stamina/40
+                self.stamina += int(self.max_stamina/40)
                 if self.stamina > self.max_stamina:
                     self.stamina = self.max_stamina
         
-
-
     class fighter_animation:
         def __init__(self):
             self.animation = "idle"
@@ -68,10 +66,10 @@
             pass
         def choose_action(self):
             if not self.animation == "dead":
-                if self.stamina < self.max_stamina / 10:
+                if self.stamina < int(self.max_stamina / 10):
                     self.action = "Rest"
                 else:
-                    ac = renpy.random.randint(1,100)
+                    ac = random.randint(1,100)
                     chances = arcDic[self.type][1]
                     if ac < chances[0]:
                         self.action = "Attack"
@@ -93,10 +91,10 @@
                             self.action = "Rest"
 
         def rest(self, divider = 5):
-            self.mana += self.max_mana / divider
+            self.mana += int(self.max_mana / divider)
             if self.mana > self.max_mana:
                 self.mana = self.max_mana
-            self.stamina += self.max_stamina / divider
+            self.stamina += int(self.max_stamina / divider)
             if self.stamina > self.max_stamina:
                 self.stamina = self.max_stamina
 
@@ -137,7 +135,8 @@
             self.enemies = enemies
             self.action = None
             self.loot_table = loot
-
+            if self.check_for_win():
+                self.turn = 4
         def set_action(self, action):
             self.action = action
         def defend(self, unit):
@@ -147,19 +146,25 @@
         def rest(self, unit):
             unit.rest()
             self.turn = 1
+        def escape(self, unit):
+            chance = random.randint(1,4)
+            if chance == 1:
+                return "escaped"
+            else:
+                self.turn = 1
 
         def attack(self, caster, target):
             damage = caster.strength
-            caster.stamina -= caster.strength/2
+            caster.stamina -= int(caster.strength/2)
             if target.action == "Defend":
-                damage = damage / 20
+                damage = int(damage / 20)
             else:
                 target.animation = "hit"
             Show("battle_attack", g = self, damage = damage, target = target, caster = caster)()
 
         def after_attack(self, damage, target, caster):
             target.health -= damage
-            interupt = renpy.random.randint(-10, 20)
+            interupt = random.randint(-10, 20)
             if caster.agility + interupt > target.agility:
                 target.action = None
             if target.health < 1:
@@ -231,7 +236,7 @@
         def enemy_after_attack(self, damage, target):
             unit = self.enemies[self.enemy_turn]
             if self.action == "Defend":
-                damage = damage/20
+                damage = int(damage/20)
             target.health -= damage
             if target.health < 1:
                 target.health = 0
@@ -269,7 +274,6 @@ screen battle(enemies, loot = None):
             [-300,-40],
             [500,-100],
             [-500,-100],
-            
         ]
     else:
         default positions = [
@@ -290,7 +294,7 @@ screen battle(enemies, loot = None):
 
     add "#0009"
     for n,i in enumerate(g.enemies):
-        vbox spacing 8 anchor .5,1.0 align .5,.78:
+        vbox spacing 8 anchor .5,1.0 align .5,.7:
             offset positions[n]
             if i.action and not i.action == "Rest":
                 frame:
@@ -334,7 +338,7 @@ screen battle(enemies, loot = None):
                         action Show("battle_item") keysym "5"
                     button:
                         text _("Escape")
-                        action Return() keysym "6"
+                        action SetScreenVariable("escaping", True) keysym "6"
                 else:
                     button:
                         text _("Cancel")
@@ -344,6 +348,10 @@ screen battle(enemies, loot = None):
             text "Enemy's turn"
         elif g.turn == 2:
             timer .1 action Show("battle_enemy_set_action", g = g)
+        # elif g.turn == 4:
+        #     button:
+        #         text _("Leave")
+        #         action Return()
 
         fixed:
             bar value main_fighter.health range main_fighter.max_health xysize(800,25) left_bar "#900" right_bar "#9005"
@@ -370,7 +378,22 @@ screen battle(enemies, loot = None):
                 button:
                     text _("Reach for the sands of time")
                     action ShowMenu("load")
-                
+
+
+    default escaping = False
+    if escaping and g.turn == 0: # Run away
+        timer .4 repeat True action Function(g.escape, main_fighter)
+        button:
+            background None
+            action NullAction()
+        frame:
+            vbox:
+                text "Looking for a chance!"
+
+
+
+
+
     elif g.turn == 4:
         timer .4 action Function(g.calculate_loot)
         button:

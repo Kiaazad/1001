@@ -39,8 +39,8 @@
     }
     def distribute_points(unit):
         while unit.points:
-            c = renpy.random.randint(1,100)
-            jitter = renpy.random.randint(-2, 2)
+            c = random.randint(1,100)
+            jitter = random.randint(-2, 2)
             if c < arcDic[unit.type][0][0]:
                 unit.max_health += (10 + jitter)
                 unit.health += (10 + jitter)
@@ -51,9 +51,9 @@
                 unit.max_stamina += (10 + jitter)
                 unit.stamina += (10 + jitter)
             elif c < arcDic[unit.type][0][3]:
-                unit.strength += (6 + (jitter/2))
+                unit.strength += (6 + (int(jitter/2)))
             elif c < arcDic[unit.type][0][4]:
-                unit.agility += (6 + (jitter/2))
+                unit.agility += (6 + (int(jitter/2)))
             unit.points -= 1
             unit.used_points += 1
 

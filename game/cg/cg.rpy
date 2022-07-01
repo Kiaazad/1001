@@ -44,10 +44,10 @@ init python:
                 self.show_options = not self.show_options
 
         def add_hover(self):
-            r = renpy.random.choice(self.clicks)
+            r = random.choice(self.clicks)
             if not r in self.hovering:
-                r.x = renpy.random.randint(-800, 800)
-                r.y = renpy.random.randint(-400, 400)
+                r.x = random.randint(-800, 800)
+                r.y = random.randint(-400, 400)
                 self.hovering.append(r)
 
         def clicked(self, click, from_reserved = False):
@@ -113,8 +113,8 @@ screen cgscr(g):
     if g.img():
         add g.img()
     if g.tick_pleasure:
-        timer renpy.random.random()+.5 repeat True action Function(g.tick)
-    timer renpy.random.randint(4, 10) repeat True action Function(g.add_hover)
+        timer random.random()+.5 repeat True action Function(g.tick)
+    timer random.randint(4, 10) repeat True action Function(g.add_hover)
 
     # if g.show_bars:
     #     vbar value hero.pleasure range 1000 left_bar "0GUI/bar2.png" right_bar "0GUI/bar1.png" align(0.0,.5) xysize(63,688) left_gutter 44 right_gutter 44
@@ -191,9 +191,9 @@ screen cgscr(g):
         action Hide("cgscr"), Return()
 
 transform cg_hover:
-    ease 2 xoffset renpy.random.randint(-40, 40) yoffset renpy.random.randint(-40, 40)
-    ease 2 xoffset renpy.random.randint(-40, 40) yoffset renpy.random.randint(-40, 40)
-    ease 2 xoffset renpy.random.randint(-40, 40) yoffset renpy.random.randint(-40, 40)
-    ease 2 xoffset renpy.random.randint(-40, 40) yoffset renpy.random.randint(-40, 40)
+    ease 2 xoffset random.randint(-40, 40) yoffset random.randint(-40, 40)
+    ease 2 xoffset random.randint(-40, 40) yoffset random.randint(-40, 40)
+    ease 2 xoffset random.randint(-40, 40) yoffset random.randint(-40, 40)
+    ease 2 xoffset random.randint(-40, 40) yoffset random.randint(-40, 40)
     repeat
 
