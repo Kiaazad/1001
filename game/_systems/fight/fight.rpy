@@ -129,10 +129,17 @@
             self.action = None
             self.loot_table = None
             self.loot = None
+            self.exp = 0
         def set(self, enemies, loot):
             self.turn = 2
             self.enemy_turn = 0
             self.enemies = enemies
+            for i in enemies:
+                if not i.animation == "dead":
+                    exp = i.level - main_fighter.level
+                    if exp < 1:
+                        exp = 1
+                    self.exp += exp
             self.action = None
             self.loot_table = loot
             if self.check_for_win():
@@ -152,8 +159,13 @@
                 return "escaped"
             else:
                 self.turn = 1
-
         def attack(self, caster, target):
+            if self.action == "Kill Attack":
+                damage = 1000
+                target.animation = "hit"
+                Show("battle_attack", g = self, damage = damage, target = target, caster = caster)()
+                return
+            
             damage = caster.strength
             caster.stamina -= int(caster.strength/2)
             if target.action == "Defend":
@@ -249,9 +261,12 @@
             if self.loot_table:
                 self.loot = drop_more(self.loot_table, len(self.enemies))
         def loot_all(self):
-            for i in self.loot:
-                hero.got(i, 1)
-            self.loot = None
+            if self.loot:
+                for i in self.loot:
+                    hero.got(i, 1)
+                self.loot = None
+            main_fighter.got_exp(self.exp)
+            self.exp = 0
 
 default battle_handler = battle_class()
 
@@ -265,6 +280,8 @@ style battle_fixed:
     align (.5,.5)
 style battle_button is zero
 style battle_frame is zero
+style battle_slider:
+    xysize (800,20)
 screen battle(enemies, loot = None):
     modal True
     if len(enemies) in [1, 3, 5]:
@@ -312,7 +329,7 @@ screen battle(enemies, loot = None):
                     if n == g.enemy_turn and (g.turn == 2 or (g.turn == 1 and i.action)):
                         background "#f003"
                     hover_background "#0f03"
-                    if g.action == "Attack":
+                    if g.action in ["Attack", "Kill Attack"]:
                         action Function(g.attack, main_fighter, i)
                 add "{} {}".format(i.name.lower(), i.animation)
 
@@ -332,7 +349,7 @@ screen battle(enemies, loot = None):
                         action Function(g.rest, main_fighter) keysym "3"
                     button:
                         text _("Spell")
-                        action Show("battle_spell") keysym "4"
+                        action Show("battle_spell", g=g) keysym "4"
                     button:
                         text _("Item")
                         action Show("battle_item") keysym "5"
@@ -354,14 +371,17 @@ screen battle(enemies, loot = None):
         #         action Return()
 
         fixed:
-            bar value main_fighter.health range main_fighter.max_health xysize(800,25) left_bar "#900" right_bar "#9005"
+            bar value main_fighter.health range main_fighter.max_health left_bar "#900" right_bar "#9005" style "battle_slider"
             text "{} / {}".format(main_fighter.health, main_fighter.max_health) size 20
         fixed:
-            bar value main_fighter.mana range main_fighter.max_mana xysize(800,25) left_bar "#006e99" right_bar "#006e9955"
+            bar value main_fighter.mana range main_fighter.max_mana left_bar "#006e99" right_bar "#006e9955" style "battle_slider"
             text "{} / {}".format(main_fighter.mana, main_fighter.max_mana) size 20
         fixed:
-            bar value main_fighter.stamina range main_fighter.max_stamina xysize(800,25) left_bar "#996900" right_bar "#99960055"
+            bar value main_fighter.stamina range main_fighter.max_stamina left_bar "#996900" right_bar "#99960055" style "battle_slider"
             text "{} / {}".format(main_fighter.stamina, main_fighter.max_stamina) size 20
+        fixed:
+            bar value main_fighter.exp range 100 left_bar "#535353" right_bar "#60606055" style "battle_slider"
+            text f"{main_fighter.exp} / 100" size 20
         frame:
             text "You are level: {}  Strength: {}  Agility: {}".format(main_fighter.level, main_fighter.strength, main_fighter.agility)
 
@@ -391,9 +411,6 @@ screen battle(enemies, loot = None):
                 text "Looking for a chance!"
 
 
-
-
-
     elif g.turn == 4:
         timer .4 action Function(g.calculate_loot)
         button:
@@ -402,17 +419,21 @@ screen battle(enemies, loot = None):
         frame:
             vbox spacing 10:
                 text _("You won.")
+                if g.exp:
+                    text _(f"{g.exp} exp.")
                 if g.loot:
                     text _("Here's your loot.")
                     hbox align .5,.5 spacing 10:
                         for i in g.loot:
                             add i.icon
+                if g.loot or g.exp:
                     button:
-                        text _("Loot all")
+                        text _("Take all")
                         action Function(g.loot_all)
                 button:
                     text _("Exit")
                     action Return("won")
+
 
 screen battle_enemy_set_action(g):
     modal True
@@ -431,7 +452,7 @@ screen battle_enemy_spell(g, unit):
 screen battle_attack(g, damage, target, caster):
     modal True
     timer 1 action Function(g.after_attack, damage, target, caster)
-screen battle_spell():
+screen battle_spell(g):
     modal True
     button:
         background None
@@ -442,6 +463,9 @@ screen battle_spell():
             button align .5,.5 padding 40,40:
                 text _("OK")
                 action Hide("battle_spell")
+            button align .5,.5 padding 40,40:
+                text _("Kill (test)")
+                action Function(g.set_action, "Kill Attack"), Hide("battle_spell")
 screen battle_item():
     modal True
     button:
@@ -463,8 +487,14 @@ init python:
 screen battle_loot(g):
     $ loot = calculate_loot(g)
 
-
-
+screen battle_points():
+    modal True
+    vbox:
+        fixed:
+            bar value main_fighter.exp range 100 left_bar "#535353" right_bar "#60606055" style "battle_slider"
+            text f"{main_fighter.exp} / 100" size 20
+        
+        text f"Points: {main_fighter.points}" size 20
 
 
 

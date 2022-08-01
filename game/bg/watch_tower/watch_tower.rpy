@@ -59,11 +59,11 @@ default cerpenger = pnco(
     Jump('cerpenger'),
     aggressive = False,
     )
-default snake_nest = pnco(
+default serpent_nest = pnco(
     "Snake nest",
-    "bg/watch_tower/snake_nest.webp",
+    "bg/watch_tower/serpent_nest.webp",
     (185, 698),
-    Jump('snake_nest'),
+    Jump('serpent_nest'),
     )
 
 default cerpenger_guard = fighter("Cerpenger guard", 9, "Beast")
@@ -80,12 +80,10 @@ label cerpenger:
         jump marble_quarry
     if _return == "won":
         $ watch_tower_loc.remove(cerpenger)
-        $ watch_tower_loc.add(snake_nest)
+        $ watch_tower_loc.add(serpent_nest)
     jump watch_tower
 
-label snake_nest:
-    "You can't enter yet."
-    jump watch_tower
+
 
 
 default watch_tower_loc = pncs("The watch tower",

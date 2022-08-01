@@ -210,7 +210,10 @@ default find_a_big_quartz = quest(
     _("Find a big quartz"),
     [_("Jafar needs a fist size quartz.")],
     )
-
+default jafar_said_hi = quest(
+    _("Jafar said hi"),
+    [_("Jafar wants you to say hi to Ariana's father..")],
+    )
 
 image bg jafars_lab = "bg/lamp/jafars_lab.webp"
 label lamp_jafar:
@@ -371,6 +374,41 @@ label lamp_jafar:
             $ my_to_do_list.complete()
             abd "But...{w=.2}{nw}"
             jaf "Go figure it out.{w=.2} I can't explain everything to you."
+
+        # An old friend quest
+        "I've met an interesting farmgirl." if "about a farm girl" in hero.flags:
+            abd "I've met an interesting farmgirl."
+            jaf "Don't fo around chasing young girls."
+            abd "It's not like that."
+            abd "I'm just delivering her homework to her."
+            jaf "An educated farmgirl? That is interesting."
+            abd "Her name is Ariana."
+            jaf "Did you get her family name?"
+            abd "No why?"
+            jaf "I know somebody with a dauther named Ariana."
+            jaf "But he lives in the city."
+            abd "She mentioned moving for Agrabah to the village."
+            jaf "Then must be the same person."
+            jaf "It is possible that they've chased my supportes out of the city."
+            jaf "You should seek him out, he can be a great help towards our end goal."
+            abd "Alright. But what should I tell him?"
+            jaf "Tell him: Jafar said hi."
+            abd "And?"
+            jaf "That's it."
+            abd "Is saying hi some code between rich people?"
+            abd "She asked me something similiar."
+            jaf "Not a code, sending reguards just shows we think and care about the other party."
+            jaf "And often starts a conversation as if we have meet in person."
+            $ qlog.got(jafar_said_hi)
+            abd "I see..."
+            jaf "Now get going."
+            abd "Alright."
+            python:
+                try:
+                    hero.flags.remove("about a farm girl")
+                except:
+                    pass
+
 
     jump inside_lamp
 

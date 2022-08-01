@@ -137,7 +137,7 @@ screen mirage_1:
     elif intervals == 15:
         text "Come to me" at fade_to_screen
     frame:
-        background "#000"
+        background "#111"
         at mirage_t(float(intervals)/20, initial)
     frame:
         background None align .5,1.0 padding 0,0
@@ -146,7 +146,7 @@ screen mirage_1:
 style mirage_1_text is zero
 
 label desert_1_conv:
-    scene black with dissolve
+    scene image "#111" with dissolve
     hide screen collect
     hide screen mirage_1
     show jasmine seducing at center with Dissolve(3)
@@ -158,10 +158,12 @@ label desert_1_conv:
     abd "What can I do for you, my princess?"
     jas "Agrabah is in trouble."
     abd "I will give my life for my city. What do you need from me?"
+    show jasmine seducing trans at center with Dissolve(3)
     jas "I need your seed, stud."
     abd "My seed?"
     jas "I need you to honor me with an heir."
     abd "With...?"
+    show jasmine seducing nude at center with Dissolve(3)
     jas "I need you to impregnate me. Right here, Right now."
     abd "Are you..."
     abd "If you insist, your highness."

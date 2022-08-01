@@ -70,7 +70,7 @@
                     for ii in i.items:
                         if ii is not None:
                             if ii.item == t:
-                                return True
+                                return ii.qtt
             else:
                 return False
 
