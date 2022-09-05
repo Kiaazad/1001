@@ -65,19 +65,19 @@ define guard_1 = Character("Guard", color="#4ff", what_text_color="#dff")
 label jasmines_quarter:
     scene
     show guard_1 normal at left
-    guard_1 "Where do you think you're going peasant? get lost."
+    guard_1 "Where do you think you're going, peasant? Get lost."
     jump palace
 
 label the_throne:
     scene
     show guard_1 normal
-    guard_1 "You can't approach the throne peasant, get lost."
+    guard_1 "You can't approach the throne, peasant, Get lost."
     jump palace
 
 label sultans_quarter:
     scene
     show guard_1 normal at right
-    guard_1 "You can't enter the building peasant, get lost."
+    guard_1 "You can't enter the building, peasant, Get lost."
     jump palace
 
 

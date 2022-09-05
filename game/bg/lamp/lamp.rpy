@@ -376,28 +376,28 @@ label lamp_jafar:
             jaf "Go figure it out.{w=.2} I can't explain everything to you."
 
         # An old friend quest
-        "I've met an interesting farmgirl." if "about a farm girl" in hero.flags:
-            abd "I've met an interesting farmgirl."
-            jaf "Don't fo around chasing young girls."
+        "I've met an interesting farm girl." if "about a farm girl" in hero.flags:
+            abd "I've met an interesting farm girl."
+            jaf "Don't fool around chasing young girls."
             abd "It's not like that."
             abd "I'm just delivering her homework to her."
-            jaf "An educated farmgirl? That is interesting."
+            jaf "An educated farm girl? That is interesting."
             abd "Her name is Ariana."
             jaf "Did you get her family name?"
             abd "No why?"
-            jaf "I know somebody with a dauther named Ariana."
+            jaf "I know somebody with a daughter named Ariana."
             jaf "But he lives in the city."
-            abd "She mentioned moving for Agrabah to the village."
-            jaf "Then must be the same person."
-            jaf "It is possible that they've chased my supportes out of the city."
+            abd "She mentioned moving from Agrabah to the village."
+            jaf "Then it should be him."
+            jaf "It is possible they've chased my supporter out of the city."
             jaf "You should seek him out, he can be a great help towards our end goal."
-            abd "Alright. But what should I tell him?"
-            jaf "Tell him: Jafar said hi."
+            abd "Alright, but what should I tell him?"
+            jaf "Tell him: \"Jafar said hi\"."
             abd "And?"
             jaf "That's it."
-            abd "Is saying hi some code between rich people?"
-            abd "She asked me something similiar."
-            jaf "Not a code, sending reguards just shows we think and care about the other party."
+            abd "Is saying \"hi,\" some code between rich people?"
+            abd "She asked me to do something similar."
+            jaf "Not a code, sending regards just shows we think and care about the other party."
             jaf "And often starts a conversation as if we have meet in person."
             $ qlog.got(jafar_said_hi)
             abd "I see..."
@@ -408,8 +408,31 @@ label lamp_jafar:
                     hero.flags.remove("about a farm girl")
                 except:
                     pass
-
-
+        "Ariana's father asked for your writing." if qlog.has(jafars_writing) == "Active" and not "Buy some paper and ink." in jafars_writing.info:
+            abd "Ariana's father asked for your writing."
+            jaf "The ever skeptical wants proof. How predictable."
+            jaf "Go buy some paper and ink."
+            "..."
+            jaf "What are you waiting around for?"
+            abd "Can't you use the ones you have here?"
+            jaf "I rather avoid using what I've conjured."
+            jaf "You don't want the not to evaporate into thin air as soon as you leave the lamp, do you?"
+            abd "I..."
+            abd "When you're right, you're right."
+            abd "I'll go buy some then."
+            $ jafars_writing.extend(_("Buy some paper and ink."))
+        "Got the paper and ink." if qlog.has(jafars_writing) == "Active" and "Buy some paper and ink." in jafars_writing.info and hero.has(paper) and hero.has(black_ink):
+            abd "Got the paper and ink."
+            jaf "Excellent, hand them to me."
+            $ hero.drop(black_ink, 1)
+            $ hero.drop(paper, 1)
+            abd "Sure."
+            pause 6
+            $ hero.got(jafars_writing_note)
+            jaf "Here, Take this to him."
+            abd "The girl won't let me talk to him directly."
+            jaf "Hand it to her then."
+            abd "Alright."
     jump inside_lamp
 
 
@@ -417,6 +440,13 @@ default quest_log_item = item(
     _("Quest log"),
     _("This allows viewing your quests anywhere."),
     "quest_log_item",
+    0,
+    ["unsellable"],
+    )
+default jafars_writing_note = item(
+    _("Jafar's writing"),
+    _("The note that jafar wrote for Ariana's father."),
+    "paper",
     0,
     ["unsellable"],
     )

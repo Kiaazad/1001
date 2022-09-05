@@ -21,6 +21,7 @@ default hajis_son = pnco(
     (670, 764),
     Jump('hajis_son'),
     hidden = False, hoffset = (35,203),
+    shifts = [[100,260]],
     )
 define hajis = Character("Haji's son", color="#4ff", what_text_color="#dff")
 define hajis_slave = Character("Haji's slave", color="#4ff", what_text_color="#dff")
@@ -47,6 +48,7 @@ default rich_laila = pnco(
     (1437, 733),
     Jump('rich_laila'),
     hidden = False, hoffset = (35,203),
+    shifts = [[90,160],[190,270]],
     )
 define lai = Character("Laila", color="#4ff", what_text_color="#dff")
 define kam = Character("Kamal", color="#4ff", what_text_color="#dff")

@@ -18,6 +18,7 @@ default traveler_1 = pnco(
     (1235, 550),
     Jump('traveler_1'),
     hidden = False, hoffset = (114,80),
+    shifts = [[100,250]],
     )
 
 default caravanserai_map = pncs(
@@ -130,7 +131,7 @@ label traveler_1:
         vir "From there, I would've be able to verify if the princess has a beautiful body as well."
         vir "For research purposes of course."
         vir "But she's no longer single and virgin. So, I just need to find my spyglass, buy a new one or send for one before moving on."
-        $ vantage_point.hidden = False
+        $ vantage_point_cg.hidden = False
         $ qlog.got(stolen_spyglass)
         abd "I'll see what I can do for you."
         abd "Can't promise anything though. Thieves of Agrabah hide their loot and it's almost impossible to get it back."

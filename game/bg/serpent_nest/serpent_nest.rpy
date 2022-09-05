@@ -77,27 +77,27 @@ label serpent_queen:
     if not "First" in serpent_queen_u.flags:
         s_queen "A sssssstrong man. I ssssee."
         s_queen "Jusssst the thing I need."
-        abd "I assume you're in charge around here. Right."
+        abd "I assume you're in charge around here, right?"
         s_queen "Yessss."
-        abd "What's wrong with your guard, he just attacked me when I tried to talk to him."
+        abd "What's wrong with your guard? He just attacked me when I tried to talk to him."
         s_queen "He is tassssked to tessst vissssitor'sss ssstrength."
         abd "Why?"
-        s_queen "To ssseek a sssuitable sssssuitter."
+        s_queen "To ssseek a sssuitable sssssuitor."
         abd "But..."
         s_queen "Hushhhh..."
         s_queen "I have a favor to ask."
-        abd "Ummm. sure?"
+        abd "Ummm, sure?"
         s_queen "There are ccccertain ssserpentsss I want you to kill."
-        abd "Killing your own kind? isn't that..."
+        abd "Killing your own kind? Isn't that..."
         s_queen "Hushhhhh..."
-        s_queen "My kind yessss, but not my keen."
+        s_queen "My kind yessss, but not my kin."
         s_queen "I only care about my own brood."
         s_queen "And I don't appriciate competition."
         $ qlog.got(kill_some_cobras)
         abd "Alright, where and who?"
-        s_queen "Cobrasss in ssssnake'sss passss. Kill assss many assss you can and bring me the corpes."
-        s_queen "I Will reward you with a sssizable keepssssake."
-        abd "Alright. Can I leave now?"
+        s_queen "Cobrasss in ssssnake'sss passss. Kill assss many assss you can and bring me the corpesessssss."
+        s_queen "I will reward you with a sssizable keepssssake."
+        abd "Alright, can I leave now?"
         s_queen "Sssssure."
         $ serpent_queen_u.add_flag("First")
     else:
@@ -118,7 +118,7 @@ label serpent_queen:
                 s_queen "You're dissssssmissssed."
 
             "I have nothing":
-                s_queen "Go, bring me waht I crave."
+                s_queen "Go, bring me what I crave."
             "I've brought [dead_snakes_count] of them." if dead_snakes_count:
                 abd "I've brought [dead_snakes_count] of them."
                 s_queen "Exssssselent. Hand them to me."
@@ -126,7 +126,6 @@ label serpent_queen:
                 pause .2
                 $ payment = (dead_snake.val*2)*dead_snakes_count
                 $ serpent_queen_u.affection += dead_snakes_count
-                s_queen "Her'sss your reward."
                 s_queen "Now go and hunt more."
             "How about my reward?" if serpent_queen_u.affection > 20 and not "got snake slave" in hero.flags:
                 abd "How about my reward?"

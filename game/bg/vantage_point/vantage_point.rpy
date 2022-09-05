@@ -11,7 +11,7 @@ default vantage_point_cg = pnco(
     None,
     (1393, 633),
     Jump('vantage_point_cg'),
-    hidden = False, hoffset = (100,-60),
+    hidden = True, hoffset = (100,-60),
     )
 
 default vantage_point_map = pncs(

@@ -16,6 +16,7 @@ default poor_ali = pnco(
     "bg/poor/ali.webp",
     (1051, 640),
     Jump('poor_ali'),
+    shifts = [[90,290]],
     )
 default poor_barracks = pnco(
     "Barracks",
@@ -29,6 +30,7 @@ default petros_shop = pnco(
     (136, 330),
     Jump('petros_shop'),
     hidden = False, hoffset = (20,-80),
+    shifts = [[110,190], [210,280]],
     )
 
 

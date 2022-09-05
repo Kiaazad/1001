@@ -97,6 +97,7 @@ screen clock:
             add "clock_back" at clock_rot(calendar.minute)
             add "clock_front" align .5,.5
             text "Day: [calendar.day]" color "#fff" yoffset 30
+            text "[calendar.minute]" color "#fff" yoffset 60
             button:
                 xysize 20,20
                 action Function(calendar.tick, 4)

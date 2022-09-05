@@ -5,6 +5,7 @@ default street_money_lender_loc = pnco(
     (483, 576),
     Jump('money_lender'),
     hidden = False, hoffset = (110,-20),
+    shifts = [[100,170],[190,260]],
     )
 default street_empty_shop_loc = pnco(
     "Empty shop",
@@ -12,6 +13,7 @@ default street_empty_shop_loc = pnco(
     (146, 486),
     Jump('empty_shop'),
     hidden = False, hoffset = (20,20),
+    shifts = [[100,170],[190,260]],
     )
 default street_karim_loc = pnco(
     "Karim's shop",
@@ -19,6 +21,7 @@ default street_karim_loc = pnco(
     (94, 636),
     Jump('karim'),
     hidden = False, hoffset = (20,20),
+    shifts = [[90,270]],
     )
 default street_palace_loc = pnco(
     "Palace",
@@ -40,6 +43,7 @@ default street_blacksmith_loc = pnco(
     (1536, 406),
     Jump('blacksmith'),
     hidden = False, hoffset = (20,20),
+    shifts = [[80,280]],
     )
 
 default street_agrabahs_gate = pnco(
@@ -72,6 +76,7 @@ default street_jamal = pnco(
     (781, 775),
     Jump('jamal'),
     hidden = False, hoffset = (14,76),
+    shifts = [[100,260]],
     )
 default street_shepard = pnco(
     "Shepard",
@@ -79,6 +84,7 @@ default street_shepard = pnco(
     (899, 780),
     Jump('shepard'),
     hidden = False, hoffset = (15,43),
+    shifts = [[140,220]],
     )
 
 default street_map = pncs(

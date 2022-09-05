@@ -31,6 +31,7 @@ default agrabahs_gate_nasim = pnco(
     "bg/agrabahs_gate/nasim.webp",
     (1057, 628),
     Jump('agrabahs_gate_nasim'),
+    shifts = [[220,270]],
     )
 define nasim = Character("Nasim", color="#4ff", what_text_color="#dff")
 
@@ -53,7 +54,7 @@ label agrabahs_gate_nasim:
     abd "Ummm..."
     abd "Who's your lady?"
     nasim "That's a secret."
-    abd "Sounds suspicious... Are you going to lore me there and jump me?"
+    abd "Sounds suspicious... Are you going to lure me there and jump me?"
     nasim "I can jump you here if you want?"
     abd "I meant mug me."
     nasim "What's the fun in that?"

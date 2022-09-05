@@ -11,6 +11,7 @@ default akbar_loc = pnco(
     (0, 466),
     Jump('akbars_shack'),
     hidden = False, hoffset = (200,0),
+    shifts = [[90,270]],
     )
 default fruits_loc = pnco(
     "Fruits shack",
@@ -18,6 +19,7 @@ default fruits_loc = pnco(
     (631, 581),
     Jump('fruit_shack'),
     hidden = False, hoffset = (83,-40),
+    shifts = [[95,260]],
     )
 default jewelry_loc = pnco(
     "Jewelry",
@@ -25,6 +27,7 @@ default jewelry_loc = pnco(
     (798, 405),
     Jump('jewelry_shop'),
     hidden = False, hoffset = (146,-80),
+    shifts = [[100,250]],
     )
 default rugs_loc = pnco(
     "Rugs and rags shack",
@@ -32,6 +35,7 @@ default rugs_loc = pnco(
     (868, 486),
     Jump('rugs_shop'),
     hidden = False, hoffset = (200,0),
+    shifts = [[90,265]],
     )
 default tailor_loc = pnco(
     "Tailor",
@@ -39,6 +43,7 @@ default tailor_loc = pnco(
     (1195, 527),
     Jump('tailor'),
     hidden = False, hoffset = (154,-80),
+    shifts = [[90,270]],
     )
 default hakim_loc = pnco(
     "Hakim",
@@ -46,6 +51,7 @@ default hakim_loc = pnco(
     (1476, 75),
     Jump('hakim'),
     hidden = False, hoffset = (100,100),
+    shifts = [[80,270]],
     )
 
 default bazaar_poor_loc = pnco(
@@ -61,6 +67,7 @@ default bazaar_fatti = pnco(
     (532, 669),
     Jump('bazaar_fatti'),
     hidden = False, hoffset = (43,106),
+    shifts = [[110,140], [180,210]],
     )
 default bazaar_map = pncs(
     "Bazaar",

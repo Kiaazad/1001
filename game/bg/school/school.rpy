@@ -116,18 +116,18 @@ label school_teacher:
             $ qlog.got(books_for_school)
             $ teacher_u.affection += 20
             $ teacher_u.add_flag("first")
-        "Ariana said hi" if qlog.has(ariana_said_hi) == "Active":
-            abd "Ariana said hi"
+        "Ariana said \"Hi\"." if qlog.has(ariana_said_hi) == "Active":
+            abd "Ariana said \"Hi\"."
             $ ariana_said_hi.complete()
-            tea "Oh, she did? How was she."
+            tea "Oh, she did? How was she?"
             abd "She looked fine."
             "..."
             abd "I mean she was..."
             tea "I got it."
-            tea "Would you say hi to her for me when you see her again?"
-            abd "Is this goung to become a back and forth thing?"
+            tea "Would you say \"Hi,\" to her for me when you see her again?"
+            abd "Is this going to become a back and forth thing?"
             tea "Sorry, I should be considerate of your time."
-            tea "here..."
+            tea "Here..."
             $ hero.gotcash(200)
             tea "Take this for your troubles."
             tea "Excuse me for a moment."
@@ -136,7 +136,7 @@ label school_teacher:
             show teacher normal with dissolve
             $ hero.got(arianas_notes)
             tea "Deliver this to her please."
-            abd "Tht's lots of notes."
+            abd "That's lots of notes."
             tea "Yes, she's a brilliant student."
             tea "It's a shame she can't attend classes anymore."
             tea "These should enable her to further her education."
