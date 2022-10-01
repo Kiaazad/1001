@@ -60,7 +60,7 @@ init python:
                 else:
                     if click.hits > 1:
                         click.hits -= 1
-                        # msg3("{}".format(click.hits))
+                        msg.msg("{}".format(click.hits))
                     else:
                         if click.items:
                             for i in click.items:

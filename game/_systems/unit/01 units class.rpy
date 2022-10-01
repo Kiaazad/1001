@@ -121,7 +121,8 @@
                 msg.msg("Can't eat that!")
 
         def add_flag(self, flag):
-            self.flags.append(flag)
+            if not flag in self.flags:
+                self.flags.append(flag)
 
 
 

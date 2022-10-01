@@ -1,88 +1,89 @@
-﻿default bazaar_street_loc = pnco(
-    "Street",
-    "bg/bazaar/street.webp",
-    (516, 343),
-    Jump('street'),
-    hidden = False, hoffset = (40,60),
-    )
-default akbar_loc = pnco(
-    "Akbar's shack",
-    "bg/bazaar/akbar.webp",
-    (0, 466),
-    Jump('akbars_shack'),
-    hidden = False, hoffset = (200,0),
-    shifts = [[90,270]],
-    )
-default fruits_loc = pnco(
-    "Fruits shack",
-    "bg/bazaar/fruits.webp",
-    (631, 581),
-    Jump('fruit_shack'),
-    hidden = False, hoffset = (83,-40),
-    shifts = [[95,260]],
-    )
-default jewelry_loc = pnco(
-    "Jewelry",
-    "bg/bazaar/jewelry.webp",
-    (798, 405),
-    Jump('jewelry_shop'),
-    hidden = False, hoffset = (146,-80),
-    shifts = [[100,250]],
-    )
-default rugs_loc = pnco(
-    "Rugs and rags shack",
-    "bg/bazaar/rugs.webp",
-    (868, 486),
-    Jump('rugs_shop'),
-    hidden = False, hoffset = (200,0),
-    shifts = [[90,265]],
-    )
-default tailor_loc = pnco(
-    "Tailor",
-    "bg/bazaar/tailor.webp",
-    (1195, 527),
-    Jump('tailor'),
-    hidden = False, hoffset = (154,-80),
-    shifts = [[90,270]],
-    )
-default hakim_loc = pnco(
-    "Hakim",
-    "bg/bazaar/hakim.webp",
-    (1476, 75),
-    Jump('hakim'),
-    hidden = False, hoffset = (100,100),
-    shifts = [[80,270]],
-    )
+﻿init:
+    default bazaar_street_loc = pnco(
+        "Street",
+        "bg/bazaar/street.webp",
+        (516, 343),
+        Jump('street'),
+        hidden = False, hoffset = (40,60),
+        )
+    default akbar_loc = pnco(
+        "Akbar's shack",
+        "bg/bazaar/akbar.webp",
+        (0, 466),
+        Jump('akbars_shack'),
+        hidden = False, hoffset = (200,0),
+        shifts = [[90,270]],
+        )
+    default fruits_loc = pnco(
+        "Fruits shack",
+        "bg/bazaar/fruits.webp",
+        (631, 581),
+        Jump('fruit_shack'),
+        hidden = False, hoffset = (83,-40),
+        shifts = [[95,260]],
+        )
+    default jewelry_loc = pnco(
+        "Jewelry",
+        "bg/bazaar/jewelry.webp",
+        (798, 405),
+        Jump('jewelry_shop'),
+        hidden = False, hoffset = (146,-80),
+        shifts = [[100,250]],
+        )
+    default rugs_loc = pnco(
+        "Rugs and rags shack",
+        "bg/bazaar/rugs.webp",
+        (868, 486),
+        Jump('rugs_shop'),
+        hidden = False, hoffset = (200,0),
+        shifts = [[90,265]],
+        )
+    default tailor_loc = pnco(
+        "Tailor",
+        "bg/bazaar/tailor.webp",
+        (1195, 527),
+        Jump('tailor'),
+        hidden = False, hoffset = (154,-80),
+        shifts = [[90,270]],
+        )
+    default hakim_loc = pnco(
+        "Hakim",
+        "bg/bazaar/hakim.webp",
+        (1476, 75),
+        Jump('hakim'),
+        hidden = False, hoffset = (100,100),
+        shifts = [[80,270]],
+        )
 
-default bazaar_poor_loc = pnco(
-    "Poor section",
-    "bg/bazaar/poor.webp",
-    (407, 999),
-    Jump('poor'),
-    hidden = False, hoffset = (0,0),
-    )
-default bazaar_fatti = pnco(
-    "Fatti",
-    "bg/bazaar/fatti.webp",
-    (532, 669),
-    Jump('bazaar_fatti'),
-    hidden = False, hoffset = (43,106),
-    shifts = [[110,140], [180,210]],
-    )
-default bazaar_map = pncs(
-    "Bazaar",
-    [
-        bazaar_street_loc,
-        akbar_loc,
-        fruits_loc,
-        jewelry_loc,
-        rugs_loc,
-        tailor_loc,
-        hakim_loc,
-        bazaar_poor_loc,
-        bazaar_fatti,
-    ], night = "bg/bazaar/night.webp"
-    )
+    default bazaar_poor_loc = pnco(
+        "Poor section",
+        "bg/bazaar/poor.webp",
+        (407, 999),
+        Jump('poor'),
+        hidden = False, hoffset = (0,0),
+        )
+    default bazaar_fatti = pnco(
+        "Fatti",
+        "bg/bazaar/fatti.webp",
+        (532, 669),
+        Jump('bazaar_fatti'),
+        hidden = False, hoffset = (43,106),
+        shifts = [[110,140], [180,210]],
+        )
+    default bazaar_map = pncs(
+        "Bazaar",
+        [
+            bazaar_street_loc,
+            akbar_loc,
+            fruits_loc,
+            jewelry_loc,
+            rugs_loc,
+            tailor_loc,
+            hakim_loc,
+            bazaar_poor_loc,
+            bazaar_fatti,
+        ], night = "bg/bazaar/night.webp"
+        )
 
 image bg bazaar = "bg/bazaar/bg.webp"
 label bazaar:
@@ -119,6 +120,31 @@ label fruit_shack:
     scene
     show simin normal
     sim "Dates?"
+    if qlog.has_line(seeking_sweets, "Fatti says the fruit vendor's wife Simin used to cook sweets."):
+        abd "Ive heard you used to cook sweets."
+        sim "That is correct."
+        abd "You don't do that anymore?"
+        sim "Ever since my husband got arrested, I have to tend this shack."
+        abd "What for did he get arrested?"
+        sim "The thief he tried to cut the hand of, turned out to be the princess."
+        abd "I see."
+        "..."
+        sim "Do you need sweets?"
+        abd "Yes, can you bake some for me?"
+        sim "I can bake small amounts if you want."
+        abd "Really?"
+        sim "Yeah, sure. I need the money."
+        abd "Awesome, when should I come back."
+        sim "Tomorrow."
+        $ seeking_sweets.extend("Simin agreed to baking some sweets for you.")
+        $ timed_quest_extends.append([seeking_sweets, "The sweets must be ready now.", calendar.when_next(90)])
+        abd "Alright. Thank you."
+        sim "Anything else you need?"
+    elif qlog.has_line(seeking_sweets, "The sweets must be ready now."):
+        $ simin_u.add_items(halva, 12, date_cake, 8, chickpea_cookie, 20, qhottab, 10, kolompeh, 15)
+        $ seeking_sweets.extend("Should I ask for more?")
+        abd "Sweets?"
+        sim "Yes, they're ready."
     show simin normal at right with move
     call screen shop(s = simin_u)
     jump bazaar
@@ -518,8 +544,16 @@ label bazaar_fatti:
     scene
     show fatti normal
     fat "What are you shopping for?"
-    abd "Nothing for now."
-    fat "You should buy something to eat, you're wasting away."
+    if qlog.has_line(seeking_sweets, "Harem girl Hulu seems to be interested in sweets."):
+        abd "I'm looking for some sweets."
+        fat "Simin can cook some for you."
+        abd "Really?"
+        fat "Yes, and they were really tasty back when she was baking."
+        abd "Thank you, I'll ask her."
+        $ seeking_sweets.extend("Fatti says the fruit vendor's wife Simin used to cook sweets.")
+    else:
+        abd "Nothing for now."
+        fat "You should buy something to eat, you're wasting away."
     jump bazaar
 
 

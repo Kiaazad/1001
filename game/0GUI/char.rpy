@@ -5,7 +5,4 @@ define jaf = Character("Jafar", color="#622", what_text_color="#fdd")
 
 define lag = Character("Lago")
 
-define hal = Character("Halia", color="#4ff", what_text_color="#dff")
-define hur = Character("Huria", color="#4ff", what_text_color="#dff")
-define hul = Character("Hulu", color="#4ff", what_text_color="#dff")
 

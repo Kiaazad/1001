@@ -1,40 +1,41 @@
-﻿default heaven_oasis_viking = pnco(
-    "The viking",
-    "bg/heaven_oasis/viking.webp",
-    (518, 559),
-    Jump('the_viking'),
-    hidden = False, hoffset = (120,97),
-    )
-default heaven_oasis_fishing = pnco(
-    "Start fishing",
-    None,
-    (824, 800),
-    Jump('heaven_oasis_fishing'),
-    )
-default heaven_oasis_drink = pnco(
-    "Drink",
-    None,
-    (924, 850),
-    Jump('heaven_oasis_drink'),
-    )
-default heaven_oasis_heaven_or_hell_fork = pnco(
-    "Heaven or hell fork",
-    None,
-    (311, 629),
-    Jump('heaven_or_hell_fork'),
-    hidden = False, hoffset = (83,-40),
-    )
+﻿init:
+    default heaven_oasis_viking = pnco(
+        "The viking",
+        "bg/heaven_oasis/viking.webp",
+        (518, 559),
+        Jump('the_viking'),
+        hidden = False, hoffset = (120,97),
+        )
+    default heaven_oasis_fishing = pnco(
+        "Start fishing",
+        None,
+        (824, 800),
+        Jump('heaven_oasis_fishing'),
+        )
+    default heaven_oasis_drink = pnco(
+        "Drink",
+        None,
+        (924, 850),
+        Jump('heaven_oasis_drink'),
+        )
+    default heaven_oasis_heaven_or_hell_fork = pnco(
+        "Heaven or hell fork",
+        None,
+        (311, 629),
+        Jump('heaven_or_hell_fork'),
+        hidden = False, hoffset = (83,-40),
+        )
 
-default heaven_oasis_loc = pncs(
-    "Heaven oasis",
-    [
-        heaven_oasis_viking,
-        heaven_oasis_heaven_or_hell_fork,
-        heaven_oasis_fishing,
-        heaven_oasis_drink,
+    default heaven_oasis_loc = pncs(
+        "Heaven oasis",
+        [
+            heaven_oasis_viking,
+            heaven_oasis_heaven_or_hell_fork,
+            heaven_oasis_fishing,
+            heaven_oasis_drink,
 
-    ], night = "bg/heaven_oasis/night.webp"
-    )
+        ], night = "bg/heaven_oasis/night.webp"
+        )
 
 image bg heaven_oasis = "bg/heaven_oasis/bg.webp"
 label heaven_oasis:
@@ -135,7 +136,20 @@ label the_viking:
         vik "Here, have one on me."
         $hero.got(beer)
         jump heaven_oasis
-    
+
+    if qlog.has_line(seeking_painful, "The viking at heaven oasis might know something."):
+        abd "I heard you mentioned thin pointy swords to Rahman."
+        vik "Ah yes, I've seen them in Europe."
+        vik "It's pretty deadly, and they used it with finesse."
+        vik "I Got a couple of wounds from them. Wanna see?"
+        abd "Maybe later."
+        abd "Can you give me instructions on how to make one?"
+        vik "No."
+        vik "But I can give you the name if you want to ask around, or look into books."
+        vik "It'c called rapier."
+        abd "Books... Jafar..."
+        abd "Thank you."
+        $ seeking_painful.extend("Ask Jafar.")
     vik "Come browse my stuff."
     show viking normal at right with move
     call screen shop(s = viking_u)

@@ -63,91 +63,88 @@ transform lampoff(x,y):
 #     align (.5,.5)
 
 
-default learn_pick_pocket = quest(
-    _("Learn pick pocket"),
-    [_("Jafar wants you to learn pick pocket from Ahmad.")]
-)
 
 
-default lamp_quest = pnco(
-    "Quest room",
-    "bg/lamp/quest.webp",
-    (1272, 828),
-    Jump('lamp_quest'),
-    hidden = False, hoffset = (114,80),
-    )
+init:
+    default lamp_quest = pnco(
+        "Quest room",
+        "bg/lamp/quest.webp",
+        (1272, 828),
+        Jump('lamp_quest'),
+        hidden = False, hoffset = (114,80),
+        )
 
-default lamp_jafar = pnco(
-    "Jafar's den",
-    "bg/lamp/library.webp",
-    (412, 225),
-    Jump('lamp_jafar'),
-    hidden = False, hoffset = (114,80),
-    )
+    default lamp_jafar = pnco(
+        "Jafar's den",
+        "bg/lamp/library.webp",
+        (412, 225),
+        Jump('lamp_jafar'),
+        hidden = False, hoffset = (114,80),
+        )
 
-default lamp_harem = pnco(
-    "Jafar's harem",
-    "bg/lamp/harem.webp",
-    (724, 47),
-    Jump('lamp_harem'),
-    hidden = False, hoffset = (114,80),
-    )
+    default lamp_harem = pnco(
+        "Jafar's harem",
+        "bg/lamp/harem.webp",
+        (724, 47),
+        Jump('lamp_harem'),
+        hidden = False, hoffset = (114,80),
+        )
 
-default lamp_agrabah = pnco(
-    "Back to Agrabah",
-    "bg/lamp/back.webp",
-    (103, 604),
-    Jump('agrabah'),
-    hidden = False, hoffset = (114,80),
-    )
+    default lamp_agrabah = pnco(
+        "Back to Agrabah",
+        "bg/lamp/back.webp",
+        (103, 604),
+        Jump('agrabah'),
+        hidden = False, hoffset = (114,80),
+        )
 
-default lamp_fight = pnco(
-    "Fighting ground",
-    "bg/lamp/fight.webp",
-    (916, 476),
-    Jump('lamp_fight'),
-    hidden = False, hoffset = (114,80),
-    )
+    default lamp_fight = pnco(
+        "Fighting ground",
+        "bg/lamp/fight.webp",
+        (916, 476),
+        Jump('lamp_fight'),
+        hidden = False, hoffset = (114,80),
+        )
 
-default lamp_save = pnco(
-    "Jar room",
-    "bg/lamp/save.webp",
-    (1024, 234),
-    ShowMenu("save"),
-    hidden = False, hoffset = (114,80),
-    )
+    default lamp_save = pnco(
+        "Jar room",
+        "bg/lamp/save.webp",
+        (1024, 234),
+        ShowMenu("save"),
+        hidden = False, hoffset = (114,80),
+        )
 
-default lamp_settings = pnco(
-    "The odd room",
-    "bg/lamp/settings.webp",
-    (600, 758),
-    ShowMenu("preferences"),
-    hidden = False, hoffset = (114,80),
-    )
+    default lamp_settings = pnco(
+        "The odd room",
+        "bg/lamp/settings.webp",
+        (600, 758),
+        ShowMenu("preferences"),
+        hidden = False, hoffset = (114,80),
+        )
 
-default lamp_gate = pnco(
-    "The gate",
-    "bg/lamp/mm.webp",
-    (1423, 533),
-    MainMenu(),
-    hidden = False, hoffset = (114,80),
-    )
+    default lamp_gate = pnco(
+        "The gate",
+        "bg/lamp/mm.webp",
+        (1423, 533),
+        MainMenu(),
+        hidden = False, hoffset = (114,80),
+        )
 
-default lamp_map = pncs(
-    "Jafar's lamp",
-    [
-        lamp_jafar,
-        lamp_harem,
-        lamp_fight,
+    default lamp_map = pncs(
+        "Jafar's lamp",
+        [
+            lamp_jafar,
+            lamp_harem,
+            lamp_fight,
 
-        lamp_quest,
+            lamp_quest,
 
-        lamp_save,
-        lamp_settings,
-        lamp_gate,
-        lamp_agrabah,
-    ]
-    )
+            lamp_save,
+            lamp_settings,
+            lamp_gate,
+            lamp_agrabah,
+        ]
+        )
 
 image bg lamp = "#000"
 label inside_lamp:
@@ -182,11 +179,10 @@ label lamp_fight:
             call screen battle(enemies, loot)
     jump inside_lamp
 
-label lamp_harem:
-    scene
-    "Under construction"
-    jump inside_lamp
-
+default learn_pick_pocket = quest(
+    _("Learn pick pocket"),
+    [_("Jafar wants you to learn pick pocket from Ahmad.")]
+)
 
 default ring_recipe = item(
     _("Ring recipe"),
@@ -433,6 +429,27 @@ label lamp_jafar:
             abd "The girl won't let me talk to him directly."
             jaf "Hand it to her then."
             abd "Alright."
+        
+        "I need a rapier." if qlog.has_line(seeking_painful, "Ask Jafar."):
+            abd "I need a rapier"
+            jaf "Where did you learn that."
+            abd "The viking at heaven oasis."
+            jaf "One of the European swords, They're not crafted around here."
+            abd "I know, I need instructions to craft one."
+            jaf "You know the drill, get me some ink and paper."
+            $ seeking_painful.extend("Bring jafar some ink and paper.")
+            abd "Alright."
+        "Got the ink and paper." if qlog.has_line(seeking_painful, "Bring jafar some ink and paper.") and hero.has(paper) and hero.has(black_ink):
+            $ hero.drop(black_ink, 1)
+            $ hero.drop(paper, 1)
+            abd "Got the ink and paper."
+            jaf "Alright."
+            "..."
+            $ hero.got(rapier_instructions)
+            jaf "Here you go."
+            $ seeking_painful.extend("Take the instructions to Rahman.")
+            abd "Thank you."
+
     jump inside_lamp
 
 
@@ -446,6 +463,13 @@ default quest_log_item = item(
 default jafars_writing_note = item(
     _("Jafar's writing"),
     _("The note that jafar wrote for Ariana's father."),
+    "paper",
+    0,
+    ["unsellable"],
+    )
+default rapier_instructions = item(
+    _("Rapier instructions"),
+    _("Materials, instructions and sketches."),
     "paper",
     0,
     ["unsellable"],

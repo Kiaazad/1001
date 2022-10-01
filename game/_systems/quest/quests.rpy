@@ -16,8 +16,9 @@
         def fail(self):
             Show("quest_notif", s = "qst_failed")()
         def extend(self, text):
-            self.info.append(text)
-            msg.msg("Changed quest: {}\n{}".format(self.name, text))
+            if not text in self.info:
+                self.info.append(_(text))
+                msg.msg("Changed quest: {}\n{}".format(self.name, text))
         
     class quest_log:
         def __init__(self):
@@ -44,7 +45,15 @@
                 return quest.stat
             else:
                 return False
-
+        def has_line(self, quest, line):
+            stat = self.has(quest)
+            if stat:
+                if quest.info[-1] == line:
+                    return True
+                else:
+                    return False
+            else:
+                return False
 image quest_notification = Live2D("_systems/quest/quest_menu_l2d/quest_menu.model3.json", loop=False, zoom=0.5
     )
 

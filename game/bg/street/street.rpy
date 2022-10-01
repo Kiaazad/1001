@@ -1,109 +1,109 @@
-﻿# Shops
-default street_money_lender_loc = pnco(
-    "Money lender",
-    "bg/street/Money lender.webp",
-    (483, 576),
-    Jump('money_lender'),
-    hidden = False, hoffset = (110,-20),
-    shifts = [[100,170],[190,260]],
-    )
-default street_empty_shop_loc = pnco(
-    "Empty shop",
-    "bg/street/empty shop.webp",
-    (146, 486),
-    Jump('empty_shop'),
-    hidden = False, hoffset = (20,20),
-    shifts = [[100,170],[190,260]],
-    )
-default street_karim_loc = pnco(
-    "Karim's shop",
-    "bg/street/karim.webp",
-    (94, 636),
-    Jump('karim'),
-    hidden = False, hoffset = (20,20),
-    shifts = [[90,270]],
-    )
-default street_palace_loc = pnco(
-    "Palace",
-    "bg/street/palace.webp",
-    (711, 357),
-    Jump('palace'),
-    hidden = False, hoffset = (20,20),
-    )
-default street_home_loc = pnco(
-    "Home",
-    "bg/street/home.webp",
-    (1464, 200),
-    Jump('agrabah'), enabled = False,
-    hidden = False, hoffset = (20,20),
-    )
-default street_blacksmith_loc = pnco(
-    "Blacksmith",
-    "bg/street/blacksmith.webp",
-    (1536, 406),
-    Jump('blacksmith'),
-    hidden = False, hoffset = (20,20),
-    shifts = [[80,280]],
-    )
+﻿init: # Shops
+    default street_money_lender_loc = pnco(
+        "Money lender",
+        "bg/street/Money lender.webp",
+        (483, 576),
+        Jump('money_lender'),
+        hidden = False, hoffset = (110,-20),
+        shifts = [[100,170],[190,260]],
+        )
+    default street_empty_shop_loc = pnco(
+        "Empty shop",
+        "bg/street/empty shop.webp",
+        (146, 486),
+        Jump('empty_shop'),
+        hidden = False, hoffset = (20,20),
+        shifts = [[100,170],[190,260]],
+        )
+    default street_karim_loc = pnco(
+        "Karim's shop",
+        "bg/street/karim.webp",
+        (94, 636),
+        Jump('karim'),
+        hidden = False, hoffset = (20,20),
+        shifts = [[90,270]],
+        )
+    default street_palace_loc = pnco(
+        "Palace",
+        "bg/street/palace.webp",
+        (711, 357),
+        Jump('palace'),
+        hidden = False, hoffset = (20,20),
+        )
+    default street_home_loc = pnco(
+        "Home",
+        "bg/street/home.webp",
+        (1464, 200),
+        Jump('agrabah'), enabled = False,
+        hidden = False, hoffset = (20,20),
+        )
+    default street_blacksmith_loc = pnco(
+        "Blacksmith",
+        "bg/street/blacksmith.webp",
+        (1536, 406),
+        Jump('blacksmith'),
+        hidden = False, hoffset = (20,20),
+        shifts = [[80,280]],
+        )
 
-default street_agrabahs_gate = pnco(
-    "Agrabah's gate",
-    "bg/street/desert.webp",
-    (655, 959),
-    Jump('agrabahs_gate'),
-    hidden = False, hoffset = (20,20),
-    )
-default street_bazaar_loc = pnco(
-    "Bazaar",
-    None,
-    (1046, 760),
-    Jump('bazaar'),
-    hidden = False, hoffset = (20,20),
-    )
+    default street_agrabahs_gate = pnco(
+        "Agrabah's gate",
+        "bg/street/desert.webp",
+        (655, 959),
+        Jump('agrabahs_gate'),
+        hidden = False, hoffset = (20,20),
+        )
+    default street_bazaar_loc = pnco(
+        "Bazaar",
+        None,
+        (1046, 760),
+        Jump('bazaar'),
+        hidden = False, hoffset = (20,20),
+        )
 
-# People
-default street_beggar = pnco(
-    "Beggar",
-    "bg/street/beggar.webp",
-    (1193, 802),
-    Jump('beggar'),
-    hidden = False, hoffset = (17,42),
-    )
+    # People
+    default street_beggar = pnco(
+        "Beggar",
+        "bg/street/beggar.webp",
+        (1193, 802),
+        Jump('beggar'),
+        hidden = False, hoffset = (17,42),
+        )
 
-default street_jamal = pnco(
-    "Jamal",
-    "bg/street/jamal.webp",
-    (781, 775),
-    Jump('jamal'),
-    hidden = False, hoffset = (14,76),
-    shifts = [[100,260]],
-    )
-default street_shepard = pnco(
-    "Shepard",
-    "bg/street/shepard.webp",
-    (899, 780),
-    Jump('shepard'),
-    hidden = False, hoffset = (15,43),
-    shifts = [[140,220]],
-    )
+    default street_jamal = pnco(
+        "Jamal",
+        "bg/street/jamal.webp",
+        (781, 775),
+        Jump('jamal'),
+        hidden = False, hoffset = (14,76),
+        shifts = [[100,260]],
+        )
+    default street_shepard = pnco(
+        "Shepard",
+        "bg/street/shepard.webp",
+        (899, 780),
+        Jump('shepard'),
+        hidden = False, hoffset = (15,43),
+        shifts = [[140,220]],
+        )
 
-default street_map = pncs(
-    "Main street",
-    [
-        street_money_lender_loc,
-        street_empty_shop_loc,
-        street_karim_loc,
-        street_agrabahs_gate,
-        street_palace_loc,
-        street_bazaar_loc,
-        street_home_loc,
-        street_blacksmith_loc,
+    default street_map = pncs(
+        "Main street",
+        [
+            street_money_lender_loc,
+            street_empty_shop_loc,
+            street_karim_loc,
+            street_agrabahs_gate,
+            street_palace_loc,
+            street_bazaar_loc,
+            street_home_loc,
+            street_blacksmith_loc,
 
-        street_beggar,
-        street_jamal,
-        street_shepard,
-    ], night = "bg/street/night.webp"
-    )
+            street_beggar,
+            street_jamal,
+            street_shepard,
+        ], night = "bg/street/night.webp"
+        )
 
 image bg street = "bg/street/bg.webp"
 label street:
@@ -157,8 +157,49 @@ label blacksmith:
     scene
     show rahman normal
     rah "My friend, what you got for me today?"
-    abd "Maybe later."
-    rah "Alright."
+    if qlog.has_line(seeking_painful, "Harem girl Halia seems to be crazy about causing pain, and she's talking about a thin pointy sword."):
+        abd "Have you ever heard of a thin pointy sword Rahman?"
+        rah "The viking at heave oasis mentioned it once."
+        abd "Can you make one?"
+        rah "Not without instructions."
+        abd "Alright."
+        rah "Anything else you need?"
+        $ seeking_painful.extend("The viking at heaven oasis might know something.")
+    elif qlog.has_line(seeking_painful, "Take the instructions to Rahman.") and hero.has(rapier_instructions):
+        abd "Got the instructions for rapier."
+        rah "What?"
+        abd "The thin pointy sword."
+        rah "Is that what it's called?"
+        $ hero.drop(rapier_instructions, 1)
+        abd "Yes, here."
+        rah "I see... Very detailed... hmmm..."
+        abd "What's the matter?"
+        rah "That handwriting is familiar."
+        abd "Really?"
+        rah "Yes, I know I saw it before... Who wrote it?"
+        menu:
+            "Jafar":
+                abd "Jafar."
+                rah "Hey, it is Jafar's handwriting."
+                rah "Where did you get it?"
+                abd "He wrote it for me."
+                rah "You're joking right? He's dead."
+                "..."
+                rah "You must've found this in palace's library."
+            "Some traveler in caravanserai.":
+                abd "Some traveler in caravanserai."
+                rah "I see."
+        rah "I'll make it tomorrow, it will be ready the day after."
+        $ timed_quest_extends.append([seeking_painful, "The rapier should be ready now.", calendar.when_next(450)])
+        abd "Alright."
+        rah "need anything else?"
+    elif qlog.has_line(seeking_painful, "The rapier should be ready now."):
+        $ rahman_u.add_items(rapier, 1)
+        abd "Is it ready?"
+        rah "Of course."
+    else:
+        abd "Maybe later."
+        rah "Alright."
     show rahman normal at right with move
     call screen shop(s = rahman_u)
     jump street

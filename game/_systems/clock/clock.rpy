@@ -1,4 +1,5 @@
 ﻿default timed_flags = []
+default timed_quest_extends = []
 
 init python:
     class calendar_class:
@@ -18,6 +19,11 @@ init python:
                     if i[2] < 1:
                         i[0].add_flag(i[1])
                         timed_flags.remove(i)
+                for i in timed_quest_extends:
+                    i[2] -= 1
+                    if i[2] < 1:
+                        i[0].extend(i[1])
+                        timed_quest_extends.remove(i)
 
                 main_fighter.recover(1)
 
@@ -63,6 +69,9 @@ init python:
                     if self.night > 1:
                         self.night = 1
 
+        def when_next(self, time):
+            remains = (360 - self.minute) + time
+            return remains 
 
         def hour_of_day(self):
             return self.minute % 15

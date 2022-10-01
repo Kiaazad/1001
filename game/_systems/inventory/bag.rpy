@@ -10,7 +10,7 @@
         destination.cash += source.cash
         source.cash = 0
 
-screen show_bag(p = hero, xside = 0.5):
+screen show_bag(p = hero, xside = 0.5, give = False):
     style_prefix "shop"
     default mode = "stack"
     default options = 1
@@ -71,22 +71,29 @@ screen show_bag(p = hero, xside = 0.5):
                         text "Take One"
                         at btn
                         action SetScreenVariable("mode", "single"), SelectedIf(mode == "single")
-                    button:
-                        text "Discard"
-                        at btn
-                        action Function(p.discard)
-                    button:
-                        text "Shuffle"
-                        at btn
-                        action Function(p.selected.shuffle)
-                    button:
-                        text "Eat / drink"
-                        at btn
-                        action SetScreenVariable("mode", "eat"), SelectedIf(mode == "eat")
-                    button:
-                        text "Close"
-                        at btn
-                        action Hide("show_bag")
+                    if give:
+                        if p.holding:
+                            button:
+                                text "Give"
+                                at btn
+                                action Function(p.give)
+                    else:
+                        button:
+                            text "Discard"
+                            at btn
+                            action Function(p.discard)
+                        button:
+                            text "Shuffle"
+                            at btn
+                            action Function(p.selected.shuffle)
+                        button:
+                            text "Eat / drink"
+                            at btn
+                            action SetScreenVariable("mode", "eat"), SelectedIf(mode == "eat")
+                        button:
+                            text "Close"
+                            at btn
+                            action Hide("show_bag")
 
     default mouse = (0,0)
     if p.holding:

@@ -20,6 +20,7 @@
             self.pick_pocket_alert = 0
 
             self.bag_x = 0
+            self.giving = None
         def dragged(self, drags, drop):
             self.bag_x = drags[0].x
             renpy.restart_interaction()
@@ -52,8 +53,13 @@
                     msg.msg("You've failed to pick {}'s pocket.".format(target.name))
 
         def discard(self):
+            msg.msg("You've discarded {}.".format(self.holding.item.name))
             self.holding = None
-
+        def give(self):
+            msg.msg("You've gave {}.".format(self.holding.item.name))
+            self.giving = self.holding
+            self.holding = None
+            return 1
         def sumit(self):
             sum = 0
             for i in self.togos.items:
@@ -115,4 +121,11 @@
                 self.cash += price
                 msg.msg("You have sold {} of {} to {} for {}".format(q, x.name, buyer.name, price))
 
-
+        def add_items(self, *args):
+            item = None
+            for i in args:
+                if item:
+                    self.bags[0].add(item, i)
+                    item = None
+                else:
+                    item = i
