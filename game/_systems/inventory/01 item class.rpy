@@ -3,7 +3,7 @@
         def __init__(self,
                 name, inf = "", icon = "_frm", val = 0,
                 tags = [], use_event = None, waste = [],
-                food = 0, water = 0,
+                food = 0, water = 0, quest = None
             ):
             self.name = name
             self.inf = inf
@@ -15,6 +15,7 @@
 
             self.food = food
             self.water = water
+            self.quest = quest
 
 init python:
     class stack:

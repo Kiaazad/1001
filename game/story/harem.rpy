@@ -246,8 +246,23 @@ label talk_to_harem_girls:
                     abd "here..."
                     if hero.giving.item in [rapier]:
                         hal "[hero.giving.item.name]!"
+                        $ seeking_painful.complete()
                         hal "Ehm..."
+                        "..."
+                        hal "Can I stab you a little?"
+                        abd "What? Why?"
+                        hal "To test it."
+                        abd "No!"
+                        hal "Just the tip?"
+                        abd "No!"
+                        hal "Please?"
+                        "..."
+                        abd "How do you feel if I want to stab you?"
+                        hal "Good?"
                         hal "I mean..."
+                        hal "Depends on what you want to stab me with..."
+                        abd "Do you have something long and pointy?"
+                        abd "Errmmm.."
                         hal "Alright I'll fuck you. Strip!"
                         jump fuck_halia
                     else:
@@ -288,6 +303,7 @@ label talk_to_harem_girls:
                         hul "I would've suck your dick for that."
                         abd "Really?"
                         hul "Sure."
+                        $ seeking_sweets.complete()
                         abd "Will... You..."
                         hul "WHy not? Drop the pants."
                         jump fuck_hulu
@@ -322,14 +338,37 @@ label talk_to_harem_girls:
                     hur "Really?"
                     call screen show_bag(give = True)
                     abd "here..."
-                    if hero.giving.item in [fluffy_doll]:
-                        hur "Yay, [hero.giving.item.name]."
-                        hur "I love it. I love it."
-                        abd "And?"
-                        hur "I..."
-                        hur "Love you?"
-                        abd "By how much?"
-                        hur "Eeep."
+                    if hero.giving.item == sheep_skin:
+                        "..."
+                        hur "Why?"
+                        abd "Huh?"
+                        hur "You're a terrible person."
+                        abd "Why?"
+                        hur "I told you how much I love fluffy things..."
+                        hur "And you killed one and brought me the skin?"
+                        abd "I didn't kill it, I've only bought the skin."
+                        abd "Thought you'd love it."
+                        hur "Did you?"
+                        hur "This is so mean."
+                        abd "I'm sorry."
+                        "..."
+                        hur "Go burry this poor animal."
+                        abd "It's not...{w=.5}{nw}"
+                        hur "Go!"
+                        abd "Alright."
+                        jump inside_lamp
+                    elif hero.giving.item == fluffy_doll:
+                        hur "Haaaa... What is this?"
+                        abd "A fluffy...{w=.5}{nw}"
+                        hur "Gimme gimme!"
+                        $ hero.drop(fluffy_doll, 1)
+                        hur "Soooo cute, I love it."
+                        abd "It was made for you... filled with love."
+                        $ seeking_fluffy.complete()
+                        hur "Come!"
+                        abd "Where?"
+                        hur "I'm going to give you some love back."
+                        abd "Alright."
                         jump fuck_huria
                     else:
                         hur "[hero.giving.item.name]?"
@@ -366,12 +405,15 @@ label talk_to_harem_girls:
     jump inside_lamp
 
 label fuck_halia:
+    show black with dissolve
     "Some fucking will go on here later"
     jump inside_lamp
 label fuck_hulu:
+    show black with dissolve
     "Some fucking will go on here later"
     jump inside_lamp
 label fuck_huria:
+    show black with dissolve
     "Some fucking will go on here later"
     jump inside_lamp
 

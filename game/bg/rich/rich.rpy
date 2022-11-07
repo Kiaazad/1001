@@ -37,7 +37,25 @@ label hajis_son:
     hajis_slave "Here you go."
     "..."
     hajis "What?"
-    abd "Nothing..."
+    if qlog.has_line(dirt_on_haji, "Rasoul wants some dirt on Haji. Something that'll land him in jail."):
+        abd "Is your father home?"
+        hajis "No."
+        abd "Do you know where he is?"
+        hajis "Yes."
+        abd "Would you care to tell me?"
+        hajis "Why?"
+        abd "I like to speak to him."
+        hajis "He doesn't want to be bothered when he's there."
+        abd "Where?"
+        "..."
+        hajis "Who are you?"
+        abd "I want to deliver something to him."
+        hajis "Is it edible?"
+        abd "No."
+        hajis "Begone then."
+        $ dirt_on_haji.extend("The son's tongue seem to be tied to food.")
+    else:
+        abd "Nothing..."
 
     jump rich
 
@@ -56,7 +74,6 @@ define kam = Character("Kamal", color="#4ff", what_text_color="#dff")
 
 label rich_laila:
     scene
-
     if not "kamal's warning" in hero.flags:
         show laila normal
         lai "New slave?"

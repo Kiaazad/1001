@@ -7,12 +7,15 @@
             self.rewards = rewards
             self.img = img
             self.stat = "Active"
+            self.flags = []
         def complete(self):
-            self.stat = "Completed"
-            Show("quest_notif", s = "qst_completed")()
+            if self.stat == "Active":
+                self.stat = "Completed"
+                Show("quest_notif", s = "qst_completed")()
         def cancel(self):
-            self.stat = "Canceled"
-            Show("quest_notif", s = "qst_canceled")()
+            if self.stat == "Active":
+                self.stat = "Canceled"
+                Show("quest_notif", s = "qst_canceled")()
         def fail(self):
             Show("quest_notif", s = "qst_failed")()
         def extend(self, text):

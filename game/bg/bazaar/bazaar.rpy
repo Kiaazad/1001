@@ -381,8 +381,8 @@ label hakim:
                 menu:
                     "I'll buy one...":
                         abd "No, but I'll buy one right away."
-                    "I didn't have money.":
-                        abd "No, They took my money, I didn't have any."
+                    "I don't have money.":
+                        abd "No, They took my money, I don't have any."
                         hak "I see, here..."
                         $ hero.gotcash(700)
                         hak "This should be enough."
@@ -522,18 +522,113 @@ label tailor:
             abd "I've found this lamp in the desert."
             far "Hmmm... show it to Akbar. Or Hakim."
             far "I'll end up selling it to them if I buy it."
+    if qlog.has_line(seeking_fluffy, "A sheep skin will do.") and hero.has(sheep_skin):
+        "..."
+        far "Hey."
+        far "Do you want that sown into something?"
+        abd "What?"
+        far "The sheep skin..."
+        abd "I don't know."
+        far "Isn't that why you brought it here?"
+        abd "Well..."
+        abd "What can you make out of it for a girl?"
+        far "I guess that would be enough for a vest."
+        abd "Sounds good."
+        far "Bring her here for measuring."
+        abd "Oh... I don't think that would be possible."
+        far "Why."
+        abd "She doesn't live around here."
+        far "Describe her to me then."
+        abd "She's sweet, kind and likes fluffy, cuddly...{w=.5}{nw}"
+        far "I meant her body size."
+        abd "She's yey high, slim with tits that fit the cup of my hand."
+        far "That's helpful but not in the way I've intended."
+        far "I'm afraid that wouldn't suffice."
+        abd "Well, she's not into wearing much of cloths anyways."
+        abd "Anything else you can sow for her?"
+        far "If she likes fluffy things, why don't you give her the animal itself?"
+        abd "Hey, that's not a bad idea."
+        abd "But I've already bought this..."
+        far "I can sow an animal out of it."
+        abd "Like a doll?"
+        far "Yes."
+        abd "She's not a child. What use she has for a doll?"
+        far "To give to her child maybe?"
+        far "Give her a child too... huh?"
+        "..."
+        far "Huh? wink wink nudge nudge."
+        "..."
+        abd "Sure."
+        $ hero.drop(sheep_skin, 1)
+        far "Alright, come back tomorrow."
+        $ seeking_fluffy.extend("Wait for the tailor to sow a doll.")
+        $ timed_quest_extends.append([seeking_fluffy, "The doll must be ready now.", calendar.when_next(90)])
+        abd "Sure."
+        far "Need anything else today?"
+    if qlog.has_line(seeking_fluffy, "The doll must be ready now."):
+        $ tailor_u.add_items(fluffy_doll, 1)
+        abd "Is my doll ready?"
+        far "Yes. I've stayed up late into the night to finish it."
+        far "I've filled it with love."
+        abd "That's weird. Did you put something weird in it?"
+        far "No no... Just horse hair and aromatics."
+        far "She's going to love it."
+        $ seeking_fluffy.extend("Filled with love?")
+        "..."
+        far "Give her my regards."
+        "..."
+        abd "Alright."
+        
     show farrokh normal at right with move
     call screen shop(s = tailor_u)
     jump bazaar
 
 # Rugs shop
-define nem = Character("Nemat", color="#4ff", what_text_color="#dff")
 
+
+define nem = Character("Nemat", color="#4ff", what_text_color="#dff")
+default nemat_u = unit(
+    "Nemat the rug seller",
+    "char/farrokh",
+
+    5410,
+    [
+        (red_rug, 2),
+        (blue_rug, 1),
+        (blue_red_rug, 2),
+        (another_red_rug, 1),
+
+    ],
+    1.3,
+
+    8,
+    "Peasant",
+    interests = ["textile"],
+    reject = ["Weapon", "armor", "lamp"]
+    )
 label rugs_shop:
     scene
     show nemat normal
     nem "Rugs?"
-    abd "Not today."
+    if qlog.has_line(seeking_fluffy, "Harem girl Huria likes cute, cuddly and fluffy stuff."):
+        abd "Fluffy?"
+        nem "Huh?"
+        abd "Got any fluffy rugs?"
+        nem "I don't think there's such a thing."
+        nem "What do you want with a fluffy rug?"
+        abd "A girl that likes fluffy things."
+        nem "I see."
+        nem "Girls these days don't know what's good for them."
+        nem "She needs a rug, pots and buckets, good old housekeeping tools."
+        "..."
+        nem "I have a cured sheep hide that's fluffy."
+        abd "That'll do."
+        $ nemat_u.add_items(sheep_skin, 1)
+        $ seeking_fluffy.extend("A sheep skin will do.")
+        nem "Maybe you can sew it into something too."
+
+    show nemat normal at right with move
+    call screen shop(s = nemat_u)
     jump bazaar
 
 

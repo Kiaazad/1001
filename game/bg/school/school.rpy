@@ -147,6 +147,7 @@ label school_teacher:
             tea "Thank you, this means a lot to me."
 
         "I want to buy something.":
+            $ teacher_u.add_flag("first")
             "I want to buy something."
             tea "Alright."
             show teacher normal at right with move

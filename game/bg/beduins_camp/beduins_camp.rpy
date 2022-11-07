@@ -54,6 +54,7 @@ label beduins_camp_sand_warrior:
     if hero.has(quartz_bit) and not qlog.has(a_diamond_to_sell):
         abd "A gem stone?"
         $ qlog.got(a_diamond_to_sell)
+        $ a_diamond_to_sell.flags.append("camp")
     jump beduins_camp
 
 default beduins_camp_loc = pncs(

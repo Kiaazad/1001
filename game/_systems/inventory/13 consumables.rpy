@@ -298,7 +298,7 @@ init: # sweets
         water = -10,
         )
     default baklava = item(
-        _("Date cake"),
+        _("Baklava"),
         _("Rhombus shaped pastry filled with nuts and dates."),
         "baklava",
         200,

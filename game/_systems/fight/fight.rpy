@@ -484,20 +484,6 @@ init python:
         loot = []
         for i in g.enemies:
             loot.append(i.loot)
-screen battle_loot(g):
-    $ loot = calculate_loot(g)
-
-screen battle_points():
-    modal True
-    vbox:
-        fixed:
-            bar value main_fighter.exp range 100 left_bar "#535353" right_bar "#60606055" style "battle_slider"
-            text f"{main_fighter.exp} / 100" size 20
-        
-        text f"Points: {main_fighter.points}" size 20
-
-
-
 
 
 default sketch = fighter("Sketch", 4)

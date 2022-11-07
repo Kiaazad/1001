@@ -220,19 +220,25 @@ label lamp_jafar:
     menu:
         "Chit chat....":
             jaf "No time for chit chat."
+        
+        # gem stone chain
         "I've found a diamond." if qlog.has(a_diamond_to_sell) == "Active" and hero.has(quartz_bit):
             abd "I've found a diamond Jafar. I'm rich!"
             jaf "Oh? Let me see..."
             "..."
             jaf "It's not a diamond. It's a quartz."
             $ quartz_bit.name = "Quartz bit"
-            abd "It's not? At lest it's a precious gem right."
-            $ quartz_bit.val = 100
+            abd "It's not? At least it's a precious gem right."
+            $ quartz_bit.inf = "Not a diamond."
+            $ quartz_bit.val = 20
             jaf "It worths pocket change."
             abd "Damn it."
             $ a_diamond_to_sell.complete()
             jaf "Where did you find it?"
-            abd "Fought a sand warrior, it turned into sand and this was in it."
+            if "quarry" in a_diamond_to_sell.flags:
+                abd "Mined it in the marble quarry."
+            else:
+                abd "Fought a sand warrior, it turned into sand and this was in it."
             jaf "I see..."
             abd "Should I throw it away?"
             jaf "Of course."
@@ -254,10 +260,46 @@ label lamp_jafar:
             abd "How big."
             jaf "At least the size of your fist."
             $ qlog.got(find_a_big_quartz)
-            abd "Any idea where I can find one?"
-            jaf "Mines or something. Figure it out, I have things to do."
+            $ marble_quarry_mine.act = Show(
+                'do_work',
+                time = 50,
+                text = "Mining rocks...",
+                loot = [
+                    [marble, 80],
+                    [quartz_bit, 10],
+                    [big_quartz, 2],
+                ]
+                )
+            if "quarry" in a_diamond_to_sell.flags:
+                abd "Can I find one that big in the quarry?"
+                jaf "That's where I would look for one."
+            else:
+                abd "Any idea where I can find one?"
+                jaf "Mines or something. Figure it out, I have things to do."
             abd "Alright."
-
+        "I've found the big gem." if qlog.has_line(find_a_big_quartz, "Jafar needs a fist size quartz.") and hero.has(big_quartz):
+            abd "I've found the big gem Jafar."
+            jaf "It's not a gem..."
+            jaf "Hand it over."
+            $ hero.drop(big_quartz, 1)
+            abd "Alright."
+            jaf "Go do something, I have some work to do. A day should do."
+            abd "Alright."
+            $ find_a_big_quartz.extend(_("Jafar said come back tomorrow."))
+            $ timed_quest_extends.append([find_a_big_quartz, "Jafar should be done with the quartz.", 360])
+        "Any news?" if qlog.has_line(find_a_big_quartz, "Jafar should be done with the quartz.") and qlog.has(find_a_big_quartz) == "Active":
+            abd "Any news Jafar?"
+            jaf "About what?"
+            abd "The ge... Quartz."
+            jaf "Ah yes, I've concocted a plan to save your hide from dying."
+            abd "But I already have that."
+            jaf "Not for long."
+            jaf "I have a hunch that the powers to be are looking to take that away again."
+            abd "Who?"
+            jaf "Doesn't matter."
+            jaf "Consider it a favor done for now."
+            $ find_a_big_quartz.complete()
+            abd "Alright."
 
         # Craft a ring chain
         "I've got the money." if hero.cash > 2000 and qlog.has(cash_in_hand) == "Active":
@@ -274,7 +316,7 @@ label lamp_jafar:
             abd "No!"
             jaf "get going then."
             abd "Right!"
-            jump agrabah
+            jump inside_lamp
         "The ring is ready..." if qlog.has(make_a_copper_ring) == "Active" and hero.has(copper_ring):
             abd "The ring is ready."
             jaf "Excellent!"
@@ -417,7 +459,7 @@ label lamp_jafar:
             abd "When you're right, you're right."
             abd "I'll go buy some then."
             $ jafars_writing.extend(_("Buy some paper and ink."))
-        "Got the paper and ink." if qlog.has(jafars_writing) == "Active" and "Buy some paper and ink." in jafars_writing.info and hero.has(paper) and hero.has(black_ink):
+        "Got the paper and ink." if qlog.has_line(jafars_writing, "Buy some paper and ink.") and hero.has(paper) and hero.has(black_ink):
             abd "Got the paper and ink."
             jaf "Excellent, hand them to me."
             $ hero.drop(black_ink, 1)
@@ -428,8 +470,10 @@ label lamp_jafar:
             jaf "Here, Take this to him."
             abd "The girl won't let me talk to him directly."
             jaf "Hand it to her then."
+            $ jafars_writing.extend(_("Give the note to Ariana."))
             abd "Alright."
         
+        # rapier chain
         "I need a rapier." if qlog.has_line(seeking_painful, "Ask Jafar."):
             abd "I need a rapier"
             jaf "Where did you learn that."
