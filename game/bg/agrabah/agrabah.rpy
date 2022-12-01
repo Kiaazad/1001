@@ -79,7 +79,7 @@ default agrabah_lamp = pnco(
     )
 default vantage_point = pnco(
     "The vantage point",
-    None,
+    "bg/no_image.png",
     (521, 328),
     Jump('vantage_point'),
     hoffset = (340,100),

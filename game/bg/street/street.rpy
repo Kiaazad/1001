@@ -55,7 +55,7 @@
         )
     default street_bazaar_loc = pnco(
         "Bazaar",
-        None,
+        "bg/no_image.png",
         (1046, 760),
         Jump('bazaar'),
         hidden = False, hoffset = (20,20),

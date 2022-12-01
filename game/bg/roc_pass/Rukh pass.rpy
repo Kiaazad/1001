@@ -4,21 +4,21 @@
 # Exists
 default roc_pass_snakes_pass = pnco(
     "Snake's pass",
-    None,
+    "bg/no_image.png",
     (400, 500),
     Jump('snakes_pass'),
     hidden = True,
     )
 default roc_pass_agrabahs_gate = pnco(
     "Agrabah's gate",
-    None,
-    (1343, 1002),
+    "bg/no_image.png",
+    (1343, 902),
     Jump('agrabahs_gate'),
     hidden = True,
     )
 default roc_pass_marble_quarry = pnco(
     "Marble quarry",
-    None,
+    "bg/no_image.png",
     (41, 805),
     Jump('marble_quarry'),
     hidden = True,

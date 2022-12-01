@@ -1,14 +1,14 @@
 ﻿# exists
 default watch_tower_marble_quarry = pnco(
     "Marble quarry",
-    None,
+    "bg/no_image.png",
     (1667, 743),
     Jump('marble_quarry'),
     )
 default watch_tower_old_gate = pnco(
     "Old gate",
-    None,
-    (888, 1020),
+    "bg/no_image.png",
+    (888, 920),
     Jump('old_gate'),
     )
 

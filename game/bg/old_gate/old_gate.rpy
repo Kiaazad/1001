@@ -1,19 +1,19 @@
 ﻿# Exits
 default old_gate_beduins_camp = pnco(
     "Beduins camp",
-    None,
+    "bg/no_image.png",
     (1500, 943),
     Jump('beduins_camp'),
     )
 default old_gate_watch_tower = pnco(
     "The watch tower",
-    None,
+    "bg/no_image.png",
     (1200, 676),
     Jump('watch_tower'),
     )
 default old_gate_southern_trade_route = pnco(
     "Southern trade route",
-    None,
+    "bg/no_image.png",
     (124, 714),
     Jump('southern_trade_route'),
     )

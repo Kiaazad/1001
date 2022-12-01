@@ -1,13 +1,13 @@
 ﻿default rich_agrabah = pnco(
     "Street",
-    None,
-    (1270, 1009),
+    "bg/no_image.png",
+    (1270, 909),
     Jump('street'),
     )
 default rich_vantage_point = pnco(
     "Go up the mountain",
-    None,
-    (139, 956),
+    "bg/no_image.png",
+    (139, 916),
     Jump('vantage_point'),
     )
 

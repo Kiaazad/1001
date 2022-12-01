@@ -13,7 +13,7 @@ init python:
             name, img, pos,
             act = [], enabled = True, 
             hits = 1, items = [], tools = [],
-            tut = False, hidden = False, hoffset = None, highlight = False, regen = 0,
+            tut = False, hidden = False, hoffset = (40,-60), highlight = False, regen = 0,
             shifts = None, aggressive = False,
             ):
             self.name = name
@@ -126,10 +126,6 @@ screen pnc(p , g):
     layer "map"
     timer 1 repeat True action Function(g.idle_tick)
 
-    # text str(g.command) size 50 yoffset 50
-    # if len(g.cond):
-    #     text str(len(g.cond[0][0])) size 50 xoffset 150
-
     for i in g.clicks:
         if isinstance(i, basestring):
             add i
@@ -150,7 +146,7 @@ screen pnc(p , g):
                         if i.act:
                             focus_mask True
                             at map_transform
-                            action Function(g.clicked, i, p), Function(g.on_show), i.act
+                            action Function(g.clicked, i, p), Function(g.on_show), Function(i.trigger), i.act
                             if i.aggressive and i.alive and not i.triggered:
                                 timer random.randint(1,5) repeat True action Function(i.hovered, 1), Function(i.trigger), i.act
                             else:

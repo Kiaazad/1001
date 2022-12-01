@@ -1,14 +1,14 @@
 ﻿
 default vantage_point_rich = pnco(
     "Back to town",
-    None,
+    "bg/no_image.png",
     (1520, 947),
     Jump('rich'),
     hidden = False, hoffset = (100,-60),
     )
 default vantage_point_cg = pnco(
     "Peep",
-    None,
+    "bg/no_image.png",
     (1393, 633),
     Jump('vantage_point_cg'),
     hidden = True, hoffset = (100,-60),

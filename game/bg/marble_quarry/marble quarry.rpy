@@ -1,19 +1,19 @@
 ﻿# Exists
 default marble_quarry_watch_tower = pnco(
     "The watch tower",
-    None,
+    "bg/no_image.png",
     (121, 652),
     Jump('watch_tower'),
     )
 default marble_quarry_roc_pass = pnco(
     "Roc pass",
-    None,
-    (1100, 990),
+    "bg/no_image.png",
+    (1100, 900),
     Jump('roc_pass'),
     )
 default marble_quarry_mine = pnco(
     "Mine rocks",
-    None,
+    "bg/no_image.png",
     (1226, 826),
     Show(
         'do_work',

@@ -1,13 +1,13 @@
 ﻿# exists
 default serpent_nest_watch_tower = pnco(
     "Watch tower",
-    None,
+    "bg/no_image.png",
     (947, 989),
     Jump('watch_tower'),
     )
 default serpent_queen = pnco(
     "Serpent queen",
-    None,
+    "bg/no_image.png",
     (845, 840),
     Jump('serpent_queen'),
     )
@@ -15,7 +15,7 @@ default serpent_queen = pnco(
 define s_slave = Character("Serpent queen", color="#4ff", what_text_color="#dff")
 default snake_slave = pnco(
     "Snake slave",
-    None,
+    "bg/no_image.png",
     (400, 680),
     Jump('snake_slave'),
     )

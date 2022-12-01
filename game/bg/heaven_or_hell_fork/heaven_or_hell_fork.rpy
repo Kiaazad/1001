@@ -1,19 +1,19 @@
 ﻿# Exits
 default heaven_or_hell_fork_beduins_camp = pnco(
     "Beduins camp",
-    None,
+    "bg/no_image.png",
     (1274, 954),
     Jump('beduins_camp'),
     )
 default heaven_or_hell_fork_heaven_oasis = pnco(
     "Heaven oasis",
-    None,
+    "bg/no_image.png",
     (1217, 509),
     Jump('heaven_oasis'),
     )
 default heaven_or_hell_fork_old_tomb = pnco(
     "Old tomb",
-    None,
+    "bg/no_image.png",
     (443, 543),
     Jump('old_tomb'),
     )

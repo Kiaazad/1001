@@ -2,7 +2,7 @@
 
 default snake_pass_roc_pass = pnco(
     "Roc pass",
-    None,
+    "bg/no_image.png",
     (882, 960),
     Jump('roc_pass'),
     hidden = True

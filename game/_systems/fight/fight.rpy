@@ -253,9 +253,10 @@
             if target.health < 1:
                 target.health = 0
                 self.turn = 3
+            else:
+                self.enemy_turn += 1 
             unit.action = None
             unit.animation = "idle"
-            self.enemy_turn += 1 
             Hide("battle_enemy_attack")()
         def calculate_loot(self):
             if self.loot_table:
@@ -433,7 +434,6 @@ screen battle(enemies, loot = None):
                 button:
                     text _("Exit")
                     action Return("won")
-
 
 screen battle_enemy_set_action(g):
     modal True

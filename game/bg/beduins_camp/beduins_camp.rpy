@@ -2,20 +2,20 @@
 # Exists
 default beduins_camp_agrabahs_gate = pnco(
     "Agrabah's gate",
-    None,
-    (980, 1009),
+    "bg/no_image.png",
+    (980, 909),
     Jump('agrabahs_gate'),
-    hidden = False, hoffset = (83,-40),
+    hidden = False,
     )
 default beduins_old_gate = pnco(
     "Old gate",
-    None,
+    "bg/no_image.png",
     (1734, 704),
     Jump('old_gate'),
     )
 default beduins_heaven_or_hell_fork = pnco(
     "Heaven or hell fork",
-    None,
+    "bg/no_image.png",
     (91, 714),
     Jump('heaven_or_hell_fork'),
     )

@@ -13,14 +13,14 @@ default agrabahs_gate_agrabah = pnco(
     )
 default agrabahs_gate_beduins_camp = pnco(
     "Beduins camp",
-    None,
+    "bg/no_image.png",
     (932, 501),
     Jump('beduins_camp'),
     )
 default agrabahs_gate_farms = pnco(
     "Farms",
-    None,
-    (111, 796),
+    "bg/no_image.png",
+    (265, 589),
     Jump('farms'),
     )
 

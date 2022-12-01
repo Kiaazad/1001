@@ -9,4 +9,4 @@ game/0GUI dev tools
 *.7z
 *.bak
 project.json
-
+*.DS_Store

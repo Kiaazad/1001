@@ -1,20 +1,20 @@
 ﻿
 default farms_village = pnco(
     "Village",
-    None,
-    (1428, 564),
+    "bg/no_image.png",
+    (1428, 464),
     Jump('village'),
     )
 default farms_orchards = pnco(
     "Orchards",
-    None,
-    (213, 607),
+    "bg/no_image.png",
+    (213, 507),
     Jump('orchards'),
     )
 default farms_agrabahs_gate = pnco(
     "Agrabahs gate",
-    None,
-    (1038, 1019),
+    "bg/no_image.png",
+    (1038, 919),
     Jump('agrabahs_gate'),
     )
 default farm_girl = pnco(

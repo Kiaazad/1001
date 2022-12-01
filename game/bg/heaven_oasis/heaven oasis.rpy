@@ -8,19 +8,19 @@
         )
     default heaven_oasis_fishing = pnco(
         "Start fishing",
-        None,
+        "bg/no_image.png",
         (824, 800),
         Jump('heaven_oasis_fishing'),
         )
     default heaven_oasis_drink = pnco(
         "Drink",
-        None,
+        "bg/no_image.png",
         (924, 850),
         Jump('heaven_oasis_drink'),
         )
     default heaven_oasis_heaven_or_hell_fork = pnco(
         "Heaven or hell fork",
-        None,
+        "bg/no_image.png",
         (311, 629),
         Jump('heaven_or_hell_fork'),
         hidden = False, hoffset = (83,-40),

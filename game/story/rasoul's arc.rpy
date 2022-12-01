@@ -140,7 +140,7 @@ label rasoul_arc_2:
     call screen show_loot(jail_chest, mandatory = "give_cash")
     abd "Is that...{w=.2} pile of books?"
     qasim "They're illegal books we confiscated, not for the prisoners."
-    show bg jail cell onlayer bg
+    show bg jail cell onlayer bg with dissolve
     show qasim normal with dissolve
     qasim "Here's your room..."
     qasim "No bed but the shackles are pretty comfy.{w=.2} Just yell if you want me to put them on you."
@@ -222,7 +222,7 @@ label rasoul_arc_3:
     qasim "Yes sir!"
     "..."
     scene
-    show bg jail onlayer bg
+    show bg jail onlayer bg with dissolve
     # show screen pnc(hero, barracks_map)
     show qasim normal with dissolve
     abd "Can I have my belongings back?"

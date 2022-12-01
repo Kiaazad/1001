@@ -1,6 +1,6 @@
 ﻿default barracks_agrabah = pnco(
     "Poor section",
-    None,
+    "bg/no_image.png",
     (924, 929),
     Jump('poor'),
     )
@@ -8,7 +8,7 @@
 default barracks_guard = pnco(
     "Guard",
     "bg/barracks/guard.webp",
-    (1300, 640),
+    (623, 623),
     Jump('barracks_guard'),
     )
 

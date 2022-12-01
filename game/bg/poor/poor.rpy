@@ -1,7 +1,7 @@
 ﻿default poor_bazaar = pnco(
     "Bazaar",
-    None,
-    (780, 980),
+    "bg/no_image.png",
+    (780, 920),
     Jump('bazaar'),
     )
 default poor_thief = pnco(
@@ -20,7 +20,7 @@ default poor_ali = pnco(
     )
 default poor_barracks = pnco(
     "Barracks",
-    None,
+    "bg/no_image.png",
     (800, 600),
     Jump('barracks'),
     )

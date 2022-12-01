@@ -1,27 +1,27 @@
 ﻿default jail_barracks = pnco(
     "Barracks",
-    None,
+    "bg/no_image.png",
     (924, 929),
     Jump('barracks'),
     )
 
 default jail_books = pnco(
     "Books",
-    None,
+    "bg/no_image.png",
     (236, 839),
     Jump('jail_books'),
     )
 
 default jail_qasim = pnco(
     "Qasim",
-    None,
+    "bg/no_image.png",
     (1431, 697),
     Jump('jail_qasim'),
     )
 
 default jail_cells = pnco(
     "Cells",
-    None,
+    "bg/no_image.png",
     (689, 669),
     Jump('jail_cells'),
     )

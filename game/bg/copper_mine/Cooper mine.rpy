@@ -2,7 +2,7 @@
 # Exists
 default cooper_mine_snake_pass = pnco(
     "Snake's pass",
-    None,
+    "bg/no_image.png",
     (400, 500),
     Jump('snakes_pass'),
     )
